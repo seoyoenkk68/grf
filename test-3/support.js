@@ -8,6 +8,7 @@
   const details = section.querySelector('.support-details');
   const introduction = section.querySelector('.support-introduction');
   const heading = section.querySelector('h2');
+  const cta = section.querySelector('.support-cta');
   let active = false, generation = 0;
   const settled = element => Promise.all(element.getAnimations().map(animation => animation.finished.catch(() => {})));
   function syncSubject() {
@@ -23,16 +24,20 @@
   addEventListener('resize', syncSubject);
   syncSubject();
   if (section.dataset.motionPreview === 'final') {
-    section.classList.add('is-title-visible', 'is-focused');
+    section.classList.add('is-title-visible', 'is-focused', 'is-cta-visible');
     return;
   }
   function reset() {
     active = false;
     generation++;
     section.classList.add('is-resetting');
-    section.classList.remove('is-title-visible', 'is-focused', 'is-details-visible', 'is-cards-visible');
+    section.classList.remove('is-title-visible', 'is-focused', 'is-details-visible', 'is-cards-visible', 'is-cta-visible');
     details.inert = true;
     details.setAttribute('aria-hidden', 'true');
+    if (cta) {
+      cta.style.setProperty('--mag-x', '0px');
+      cta.style.setProperty('--mag-y', '0px');
+    }
     section.getBoundingClientRect();
     section.classList.remove('is-resetting');
   }
@@ -57,10 +62,18 @@
     if (id !== generation) return;
     details.inert = false;
     section.classList.add('is-cards-visible');
+    await new Promise(resolve => setTimeout(resolve, 60));
+    if (id !== generation) return;
+    const cards = section.querySelectorAll('.support-card');
+    await Promise.all([...cards].map(settled));
+    if (id !== generation) return;
+    await new Promise(resolve => setTimeout(resolve, 250));
+    if (id !== generation) return;
+    section.classList.add('is-cta-visible');
   }
   function finish() {
     generation++;
-    section.classList.add('is-title-visible', 'is-focused', 'is-details-visible', 'is-cards-visible');
+    section.classList.add('is-title-visible', 'is-focused', 'is-details-visible', 'is-cards-visible', 'is-cta-visible');
     details.inert = false;
     details.removeAttribute('aria-hidden');
   }
@@ -74,10 +87,22 @@
   }, { rootMargin: '-1px 0px -1px 0px', threshold: 0 });
   entryObserver.observe(section);
   exitObserver.observe(section);
-  reduced.addEventListener('change', () => {
-    if (reduced.matches && active) {
-      finish();
-    }
-  });
+  if (cta && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let bound = null;
+    const updateBound = () => { bound = cta.getBoundingClientRect(); };
+    cta.addEventListener('pointerenter', updateBound);
+    cta.addEventListener('pointermove', e => {
+      if (!bound) updateBound();
+      const relX = e.clientX - (bound.left + bound.width / 2);
+      const relY = e.clientY - (bound.top + bound.height / 2);
+      cta.style.setProperty('--mag-x', `${(relX * 0.28).toFixed(1)}px`);
+      cta.style.setProperty('--mag-y', `${(relY * 0.28).toFixed(1)}px`);
+    });
+    cta.addEventListener('pointerleave', () => {
+      cta.style.setProperty('--mag-x', '0px');
+      cta.style.setProperty('--mag-y', '0px');
+      bound = null;
+    });
+  }
 })();
 
