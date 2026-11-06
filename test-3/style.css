@@ -1,0 +1,21 @@
+/* Page foundations only. Component layout belongs in its own stylesheet.
+   Working values for Test 03; these are not the final shared design tokens. */
+@font-face {
+  font-family: Forum;
+  src: url("../assets/fonts/FORUM-REGULAR.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+.grf-page {
+  --paper: #f5f1e8;
+  --ink: #34382f;
+  --gold: #e7b149;
+  --ink-muted: #676b60;
+  --border: #34382f55;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Pretendard, "Malgun Gothic", sans-serif;
+  font-synthesis: none;
+}
