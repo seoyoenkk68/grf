@@ -28,6 +28,7 @@
     hero.classList.add('intro-complete');animations.forEach(a=>a.cancel());animations=[];
     document.documentElement.classList.remove('grf-intro-locked');
     select('#status').textContent='인트로 재생 완료';
+    hero.dispatchEvent(new Event('grf:hero-ready'));
   }
   async function play(){
     generation++;animations.forEach(a=>a.cancel());animations=[];
@@ -69,6 +70,7 @@
   document.documentElement.classList.add('grf-intro-locked');
   window.scrollTo(0,0);
   syncIntroLogo();hero.classList.add('intro-start-preview');
+  hero.addEventListener('grf:hero-copy-change',fit);
   reduced.addEventListener('change',()=>{if(reduced.matches)finish();});
   addEventListener('resize',()=>{syncIntroLogo();if(animations.length)finish();fit();});
   Promise.race([document.fonts.ready,new Promise(resolve=>setTimeout(resolve,4000))]).then(async()=>{

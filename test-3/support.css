@@ -104,7 +104,10 @@
   background: rgba(245, 241, 232, 0.95);
   backdrop-filter: blur(12px);
   color: var(--ink);
-  font: 600 14px/1.4 Pretendard, "Malgun Gothic", sans-serif;
+  font:
+    600 14px/1.4 Pretendard,
+    "Malgun Gothic",
+    sans-serif;
   letter-spacing: -0.015em;
   cursor: pointer;
   text-decoration: none;
@@ -160,7 +163,9 @@
   font-weight: 400;
   line-height: 1;
   color: #9b8768;
-  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), color 350ms ease;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 350ms ease;
 }
 .grf-support .support-cta:is(:hover, :focus-visible) .support-cta-arrow {
   transform: translate(3px, -3px) rotate(45deg);
@@ -310,6 +315,7 @@
   letter-spacing: -0.025em;
   word-break: keep-all;
   font-size: 16px;
+  color: #9b917b;
 }
 .grf-support .support-summary {
   margin-top: 0;
@@ -356,22 +362,6 @@
 }
 .grf-support .support-card:is(:hover, :focus-within) .support-card-image img {
   transform: scale(1.05);
-}
-.grf-support .support-card-folio {
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  font:
-    400 12px/1.3 Forum,
-    serif;
-  letter-spacing: 0.08em;
-  color: #6d5943;
-  background: rgba(245, 241, 232, 0.9);
-  padding: 3px 8px;
-  border-radius: 2px;
-  backdrop-filter: blur(4px);
-  z-index: 1;
-  display: none;
 }
 .grf-support .support-card-content {
   padding: 20px clamp(18px, 1.65vw, 30px) 24px;
@@ -617,15 +607,47 @@
   }
 }
 /* Motion states only. Keep the user's card layout and type values intact. */
-.grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 { transform: scale(1.388889); }
-.grf-support[data-motion-preview="live"].is-motion-ready .support-details { visibility: visible; }
-.grf-support[data-motion-preview="live"].is-motion-ready .support-introduction { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 900ms var(--support-ease); }
-.grf-support[data-motion-preview="live"].is-details-visible .support-introduction { opacity: 1; transform: translateY(0); }
-.grf-support[data-motion-preview="live"].is-motion-ready .support-card { clip-path: inset(0% 0% 100% 0%); transform: translateY(-36px); transition: clip-path 1400ms var(--support-ease), transform 1400ms var(--support-ease); }
-.grf-support[data-motion-preview="live"].is-cards-visible .support-card { clip-path: inset(0% 0% 0% 0%); transform: translateY(0); }
-.grf-support[data-motion-preview="live"].is-cards-visible .support-card:nth-child(2) { transition-delay: 300ms; }
-.grf-support[data-motion-preview="live"].is-cards-visible .support-card:nth-child(3) { transition-delay: 600ms; }
-.grf-support[data-motion-preview="live"].is-cards-visible .support-card:nth-child(4) { transition-delay: 900ms; }
+.grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 {
+  transform: scale(1.388889);
+}
+.grf-support[data-motion-preview="live"].is-motion-ready .support-details {
+  visibility: visible;
+}
+.grf-support[data-motion-preview="live"].is-motion-ready .support-introduction {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms var(--support-ease);
+}
+.grf-support[data-motion-preview="live"].is-details-visible
+  .support-introduction {
+  opacity: 1;
+  transform: translateY(0);
+}
+.grf-support[data-motion-preview="live"].is-motion-ready .support-card {
+  clip-path: inset(0% 0% 100% 0%);
+  transform: translateY(-36px);
+  transition:
+    clip-path 1400ms var(--support-ease),
+    transform 1400ms var(--support-ease);
+}
+.grf-support[data-motion-preview="live"].is-cards-visible .support-card {
+  clip-path: inset(0% 0% 0% 0%);
+  transform: translateY(0);
+}
+.grf-support[data-motion-preview="live"].is-cards-visible
+  .support-card:nth-child(2) {
+  transition-delay: 300ms;
+}
+.grf-support[data-motion-preview="live"].is-cards-visible
+  .support-card:nth-child(3) {
+  transition-delay: 600ms;
+}
+.grf-support[data-motion-preview="live"].is-cards-visible
+  .support-card:nth-child(4) {
+  transition-delay: 900ms;
+}
 @media (prefers-reduced-motion: reduce) {
   .grf-scroll-test {
     scroll-behavior: auto;
@@ -645,8 +667,15 @@
   .grf-support h2 {
     transition: none;
   }
-  .grf-support[data-motion-preview="live"].is-motion-ready .support-introduction,
-  .grf-support[data-motion-preview="live"].is-motion-ready .support-card { opacity: 1; transform: none; clip-path: none; transition: none; }
-  .grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 { transform: none; }
+  .grf-support[data-motion-preview="live"].is-motion-ready
+    .support-introduction,
+  .grf-support[data-motion-preview="live"].is-motion-ready .support-card {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+  .grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 {
+    transform: none;
+  }
 }
-
