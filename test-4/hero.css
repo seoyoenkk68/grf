@@ -1,0 +1,762 @@
+/* Test 03 / Hero only.
+   Scope every selector to .grf-hero; do not add unscoped h1, p, button or .header rules.
+   Order: foundation → header → image/title → caption → intro → responsive → reduced motion. */
+
+/* 1. Local foundations and layout */
+.grf-hero {
+  --gutter: clamp(24px, 3.4vw, 72px);
+  --display: clamp(48px, 6.7vw, 100px);
+  --tracking: -0.03em;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --header-height: 112px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  max-width: 2560px;
+  margin: auto;
+}
+.grf-hero *,
+.grf-hero *::before,
+.grf-hero *::after {
+  box-sizing: border-box;
+}
+.grf-hero h1,
+.grf-hero p {
+  margin: 0;
+}
+.grf-hero button {
+  font: inherit;
+}
+.grf-hero button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+}
+.grf-hero .header-reveal,
+.grf-hero .caption-reveal {
+  overflow: hidden;
+}
+.grf-hero .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 2. Header, navigation and rolling recruitment CTA */
+.grf-hero .header-reveal {
+  height: var(--header-height);
+}
+.grf-hero .header-fixed {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  max-width: 2560px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  background: var(--paper);
+  overflow: hidden;
+  transform: translateY(0);
+}
+.grf-hero .header {
+  position: relative;
+  height: var(--header-height);
+  padding: 0 calc(var(--gutter) - 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+.grf-hero .brand {
+  font:
+    400 29px/1 Forum,
+    serif;
+  letter-spacing: -0.045em;
+  color: inherit;
+  text-decoration: none;
+}
+.grf-hero .brand:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+}
+.grf-hero .brand span {
+  display: block;
+  font-size: 22px;
+  text-align: center;
+}
+.grf-hero .ribbon-nav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  height: 70px;
+  gap: clamp(24px, 2.4vw, 48px);
+  padding: 0 46px;
+  align-items: center;
+  isolation: isolate;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+}
+.grf-hero .nav-item {
+  border: 0;
+  background: none;
+  color: var(--ink);
+  padding: 0 0 4px;
+  min-height: 44px;
+  font:
+    600 15px/1.4 Pretendard,
+    "Malgun Gothic",
+    sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.grf-hero .nav-label {
+  display: grid;
+  height: 30px;
+  overflow: hidden;
+  padding-inline: 4px;
+}
+.grf-hero .nav-label-ko,
+.grf-hero .nav-label-en {
+  grid-area: 1 / 1;
+  display: block;
+  line-height: 30px;
+  text-align: center;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.grf-hero .nav-label-en {
+  font-family: Forum, serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  font-synthesis: style;
+  letter-spacing: -0.02em;
+  color: inherit;
+  transform: translateY(110%);
+}
+.grf-hero :is(.nav-item, .join):is(:hover, :focus-visible) .nav-label-ko {
+  transform: translateY(-110%);
+}
+.grf-hero :is(.nav-item, .join):is(:hover, :focus-visible) .nav-label-en {
+  transform: translateY(0);
+}
+.grf-hero .nav-item:focus-visible {
+  outline: 1px solid #a7957d;
+  outline-offset: 0;
+}
+.grf-hero .join {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 44px;
+  padding: 6px 0;
+  font-size: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 450ms var(--ease);
+}
+.grf-hero .join-arrow {
+  display: block;
+  font-size: 23px;
+  font-weight: 400;
+  transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.grf-hero .join:is(:hover, :focus-visible) {
+  border-bottom-color: #a7957d;
+}
+.grf-hero .join:is(:hover, :focus-visible) .join-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* 3. Image and editorial headline */
+.grf-hero .scene {
+  position: relative;
+  isolation: isolate;
+  height: calc(100svh - 292px);
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.grf-hero .intro-boundary {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.grf-hero .intro-card-motion {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+.grf-hero .image-mask {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.grf-hero .image-mask img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 58%;
+  transform-origin: 50% 50%;
+}
+.grf-hero .shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #142a355e 0%,
+    #02121c87 55%,
+    #142a3570 76%,
+    #10291d57 100%
+  );
+}
+.grf-hero .scene-copy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: clamp(44px, 6svh, 80px) var(--gutter) 0;
+  text-align: center;
+  color: var(--gold);
+}
+.grf-hero h1 {
+  font:
+    400 var(--display)/0.9 Forum,
+    serif;
+  letter-spacing: var(--tracking);
+}
+.grf-hero h1 span {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: auto;
+}
+.grf-hero h1 .line-window {
+  width: auto;
+  max-width: none;
+  overflow: hidden;
+  padding: 0.13em 0.08em;
+  margin: -0.13em -0.08em;
+}
+.grf-hero h1 .headline-text {
+  width: max-content;
+  max-width: none;
+  margin: 0 auto;
+}
+/* Forum Regular is the supplied face; permit a synthetic slant only here. */
+.grf-hero h1 .gold {
+  font-style: italic;
+  font-synthesis: style;
+}
+
+/* 4. Lower caption and scroll cue */
+.grf-hero .editorial-note {
+  min-height: 180px;
+  display: grid;
+  grid-template-columns: 1fr 1.45fr 138px;
+  gap: 48px;
+  align-items: center;
+  padding: 32px calc(var(--gutter) - 16px) 36px;
+}
+.grf-hero .philosophy {
+  font-size: clamp(18px, 1.2vw, 24px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+.grf-hero .body-copy {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.grf-hero .scroll-cue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 8px 0 8px 16px;
+  min-height: 64px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  justify-self: end;
+}
+.grf-hero .scroll-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.grf-hero .scroll-label {
+  font:
+    500 9px/1.4 Pretendard,
+    "Malgun Gothic",
+    sans-serif;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.grf-hero .scroll-title {
+  font:
+    400 27px/1 Forum,
+    serif;
+  letter-spacing: -0.03em;
+}
+.grf-hero .scroll-arrow {
+  display: block;
+  width: 18px;
+  height: 46px;
+  color: #9b8768;
+  transition: transform 500ms var(--ease);
+}
+.grf-hero .scroll-cue:is(:hover, :focus-visible) .scroll-arrow {
+  transform: translateY(5px);
+}
+
+/* 5. Intro states. JavaScript controls timing; CSS owns resting states. */
+.grf-hero .intro-logo {
+  display: none;
+  position: absolute;
+  inset: 0;
+  place-content: center;
+  pointer-events: none;
+  color: white;
+  text-align: center;
+  font:
+    400 48px/1 Forum,
+    serif;
+  letter-spacing: -0.04em;
+}
+.grf-hero .intro-logo span {
+  display: block;
+  font-size: calc(1em * var(--family-ratio, 0.75862));
+  margin-top: var(--family-gap, 0em);
+  line-height: 1;
+  text-align: center;
+}
+.grf-hero .intro-logo-reveal {
+  padding: 0.08em 0.12em;
+  line-height: 1;
+}
+.grf-hero.intro-start-preview .image-mask {
+  clip-path: inset(24% 34% round 24px);
+}
+.grf-hero.intro-start-preview .image-mask img {
+  transform: scale(0.92);
+}
+.grf-hero.intro-start-preview .intro-logo {
+  display: grid;
+  opacity: 1;
+}
+.grf-hero.intro-start-preview .scene-copy {
+  opacity: 0;
+  pointer-events: none;
+}
+.grf-hero.intro-start-preview .header,
+.grf-hero.intro-start-preview .editorial-note {
+  visibility: hidden;
+  pointer-events: none;
+}
+.grf-hero.intro-start-preview .intro-boundary {
+  clip-path: inset(0 0 24% 0);
+}
+.grf-hero.intro-start-preview:not(.card-arrived) .intro-card-motion {
+  transform: translateY(54%);
+}
+.grf-hero.intro-start-preview:not(.logo-revealed) .intro-logo-reveal {
+  clip-path: polygon(0% 0%, 0% 0%, -25% 100%, 0% 100%);
+}
+.grf-hero.intro-start-preview .headline-text {
+  transform: translateY(125%);
+}
+.grf-hero.intro-start-preview .shade {
+  opacity: 0.06;
+}
+.grf-hero.intro-start-preview.mask-expanding .intro-boundary,
+.grf-hero.intro-start-preview.mask-expanded .intro-boundary {
+  clip-path: none;
+}
+.grf-hero.mask-expanding .image-mask {
+  will-change: clip-path;
+}
+.grf-hero.mask-expanding .image-mask img {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.grf-hero.intro-start-preview.mask-expanded .image-mask {
+  clip-path: inset(0% 0% round 0px);
+}
+.grf-hero.intro-start-preview.mask-expanded .image-mask img {
+  transform: scale(1);
+}
+.grf-hero.intro-start-preview.mask-expanded .intro-logo {
+  visibility: hidden;
+}
+.grf-hero.intro-start-preview.headline-entering .scene-copy {
+  opacity: 1;
+  pointer-events: auto;
+}
+.grf-hero.intro-start-preview.header-entering .header,
+.grf-hero.intro-start-preview.caption-entering .editorial-note {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* 6. Responsive layout */
+@media (min-width: 1800px) {
+  .grf-hero .scene-copy {
+    padding-top: 0;
+  }
+  .grf-hero .scene {
+    min-height: 700px;
+  }
+}
+@media (max-width: 1199px) {
+  .grf-hero {
+    --header-height: 96px;
+  }
+  .grf-hero .header {
+    height: 96px;
+    gap: 20px;
+  }
+  .grf-hero .brand {
+    font-size: 25px;
+  }
+  .grf-hero .ribbon-nav {
+    font-size: 12px;
+  }
+  .grf-hero .scene {
+    height: 670px;
+    min-height: 0;
+  }
+  .grf-hero .scene-copy {
+    padding-top: 64px;
+  }
+  .grf-hero h1 {
+    font-size: clamp(64px, 8vw, 96px);
+  }
+  .grf-hero .editorial-note {
+    gap: 24px;
+  }
+  .grf-hero .body-copy {
+    font-size: 13px;
+  }
+  .grf-hero .body-copy br:not(.slide-copy-break) {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grf-hero .ribbon-nav {
+    gap: 22px;
+    padding-inline: 32px;
+  }
+  .grf-hero .nav-item {
+    font-size: 12px;
+  }
+  .grf-hero .nav-label-en {
+    font-size: 19px;
+  }
+  .grf-hero .brand {
+    font-size: 22px;
+  }
+  .grf-hero .join {
+    font-size: 12px;
+    gap: 14px;
+  }
+  .grf-hero .editorial-note {
+    grid-template-columns: 1fr 1.2fr 120px;
+  }
+  .grf-hero .scroll-cue {
+    gap: 16px;
+  }
+  .grf-hero .scroll-title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .grf-hero {
+    --header-height: 92px;
+    padding: 0 12px;
+  }
+  .grf-hero .header-fixed {
+    padding-inline: 12px;
+  }
+  .grf-hero .header {
+    height: 92px;
+    padding: 0 10px;
+  }
+  .grf-hero .ribbon-nav {
+    display: none;
+  }
+  .grf-hero .join {
+    gap: 24px;
+    font-size: 13px;
+  }
+  .grf-hero .scene {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+  }
+  .grf-hero .intro-boundary {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    aspect-ratio: 16/9;
+  }
+  .grf-hero .image-mask {
+    aspect-ratio: auto;
+  }
+  .grf-hero .image-mask img {
+    object-fit: contain;
+  }
+  .grf-hero .shade {
+    background: #142a3514;
+  }
+  .grf-hero .intro-logo {
+    inset: 0;
+    aspect-ratio: auto;
+    font-size: 30px;
+  }
+  .grf-hero .scene-copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    min-width: 0;
+    padding: 36px 8px 0;
+    color: var(--ink);
+  }
+  .grf-hero h1 {
+    font-size: clamp(37px, 9.8vw, 62px);
+    line-height: 1.02;
+  }
+  .grf-hero h1 span {
+    width: auto;
+    text-wrap: balance;
+    letter-spacing: -0.06em;
+  }
+  .grf-hero h1 .headline-text {
+    width: auto;
+    max-width: 100%;
+    text-wrap: balance;
+  }
+  .grf-hero h1 .gold {
+    font-size: 1em;
+    max-width: 360px;
+    margin-top: 14px;
+    color: #917036;
+    letter-spacing: -0.045em;
+  }
+  .grf-hero .editorial-note {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+    padding: 32px 16px 28px;
+    min-height: 0;
+  }
+  .grf-hero .philosophy {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .grf-hero .body-copy {
+    line-height: 1.85;
+    max-width: 400px;
+    margin: auto;
+  }
+  .grf-hero .scroll-cue {
+    justify-self: center;
+    margin-top: 8px;
+    padding-left: 18px;
+    gap: 26px;
+  }
+  .grf-hero .scroll-title {
+    font-size: 25px;
+  }
+  .grf-hero.intro-start-preview .image-mask {
+    clip-path: inset(12% 16% round 16px);
+  }
+  .grf-hero.intro-start-preview .image-mask img {
+    transform: scale(0.97);
+  }
+  .grf-hero.intro-start-preview .intro-boundary {
+    clip-path: inset(0 0 12% 0);
+  }
+  .grf-hero.intro-start-preview:not(.card-arrived) .intro-card-motion {
+    transform: translateY(78%);
+  }
+  .grf-hero.intro-start-preview.mask-expanded .image-mask {
+    clip-path: inset(0% 0% round 0px);
+  }
+  .grf-hero.intro-start-preview.mask-expanded .image-mask img {
+    transform: scale(1);
+  }
+  .grf-hero.intro-start-preview.mask-expanded .intro-boundary {
+    clip-path: none;
+  }
+}
+
+/* 7. Hero slideshow */
+.grf-hero .image-mask img {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+.grf-hero .image-mask img:is(.is-current, .is-previous) {
+  visibility: visible;
+}
+.grf-hero .image-mask img.is-current {
+  z-index: 1;
+}
+.grf-hero .shade {
+  z-index: 2;
+}
+.grf-hero .hero-carousel-controls {
+  visibility: hidden;
+}
+.grf-hero.intro-complete .hero-carousel-controls {
+  visibility: visible;
+}
+.grf-hero .hero-carousel-controls button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.grf-hero .hero-carousel-controls button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+.grf-hero .hero-carousel-controls svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.grf-hero .hero-carousel-controls .hero-carousel-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #f8f1e5;
+}
+.grf-hero .hero-carousel-arrow svg {
+  stroke-width: 1.2;
+  filter: drop-shadow(0 1px 2px #102019b3);
+}
+.grf-hero .hero-carousel-arrow[data-slide-step="-1"] {
+  left: clamp(14px, 2.4vw, 42px);
+}
+.grf-hero .hero-carousel-arrow[data-slide-step="1"] {
+  right: clamp(14px, 2.4vw, 42px);
+}
+.grf-hero .hero-carousel-controls .hero-carousel-arrow:hover {
+  color: #ffe0a1;
+}
+.grf-hero .hero-carousel-timeline {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #f8f1e5;
+}
+.grf-hero .hero-carousel-timeline .hero-carousel-slide {
+  display: grid;
+  place-content: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 4px 0;
+  font: 400 13px/1 Forum, serif;
+  text-align: center;
+}
+.grf-hero .hero-carousel-track {
+  width: clamp(42px, 5vw, 74px);
+  height: 2px;
+  background: #f8f1e57a;
+}
+.grf-hero .hero-carousel-track > span {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #ffe0a1;
+}
+.grf-hero .hero-carousel-slide[aria-current="true"] {
+  color: #ffe0a1;
+}
+.grf-hero .hero-carousel-playback {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+}
+.grf-hero .hero-carousel-playback .hero-carousel-play-icon,
+.grf-hero .hero-carousel-playback.is-paused .hero-carousel-pause-icon {
+  display: none;
+}
+.grf-hero .hero-carousel-playback.is-paused .hero-carousel-play-icon {
+  display: block;
+}
+@media (max-width: 767px) {
+  .grf-hero .hero-carousel-controls .hero-carousel-arrow {
+    top: calc((100vw - 24px) * 9 / 32);
+  }
+  .grf-hero .hero-carousel-timeline {
+    position: relative;
+    inset: auto;
+    transform: none;
+    justify-content: center;
+    margin-top: 14px;
+    color: var(--ink);
+  }
+  .grf-hero .hero-carousel-track {
+    background: #8c713c55;
+  }
+  .grf-hero .hero-carousel-track > span {
+    background: #806331;
+  }
+  .grf-hero .hero-carousel-slide[aria-current="true"] {
+    color: #806331;
+  }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .grf-hero,
+  .grf-hero * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+  .grf-hero.intro-start-preview:not(.card-arrived) .intro-card-motion {
+    transform: none;
+  }
+  .grf-hero.intro-start-preview:not(.logo-revealed) .intro-logo-reveal {
+    clip-path: none;
+  }
+  .grf-hero .scroll-cue:is(:hover, :focus-visible) .scroll-arrow,
+  .grf-hero .join:is(:hover, :focus-visible) .join-arrow {
+    transform: none;
+  }
+}
