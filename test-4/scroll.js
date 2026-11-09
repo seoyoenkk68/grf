@@ -46,6 +46,7 @@
     const current = fifthInView() ? fifth
       : fourthInView() ? fourth : beyondHero ? panels[activePanel] : hero;
     fourth.classList.toggle('is-visible', current === fourth || fadingFourth);
+    fifth.classList.toggle('is-visible', current === fifth);
     if (current === indicatedSection) return;
     indicatedSection = current;
     indicatorDots.forEach(dot => {
@@ -95,7 +96,8 @@
     const startY = scrollY;
     const startX = spread.scrollLeft;
     const verticalTarget = targetPanel < 0 ? target : spread;
-    const endY = startY + verticalTarget.getBoundingClientRect().top;
+    const headerOffset = target === fifth ? header.offsetHeight : 0;
+    const endY = startY + verticalTarget.getBoundingClientRect().top - headerOffset;
     const endX = targetPanel < 0 ? startX : targetPanel * spread.clientWidth;
     const duration = endX !== startX ? horizontalDuration : verticalDuration;
     if (targetPanel === 0 && (activePanel === 1 || startX > 0)) {
@@ -166,16 +168,21 @@
     if (moving || continuing) { event.preventDefault(); return; }
     let target;
     if (atFifth) {
-      if (direction < 0 && fifth.getBoundingClientRect().top >= -1) target = fourth;
+      if (direction < 0 && fifth.getBoundingClientRect().top >= header.offsetHeight - 2) target = fourth;
       else lastWheel = -Infinity;
     } else if (atFourth) {
       if (direction > 0) {
         if (!fourth.dispatchEvent(new Event('people:advance', { cancelable: true }))) {
           event.preventDefault();
-        } else {
-          // Native scrolling can bring the cards into view on short screens.
-          lastWheel = -Infinity;
+          return;
         }
+        // If people:advance didn't consume it (or cards are finished/visible), snap to fifth
+        if (fifth.getBoundingClientRect().top <= innerHeight) {
+          event.preventDefault();
+          go(fifth);
+          return;
+        }
+        lastWheel = -Infinity;
         return;
       }
       if (!desktop.matches || fourth.getBoundingClientRect().top < -1) {
