@@ -5,10 +5,9 @@
 /* 1. Local foundations and layout */
 .grf-hero {
   --gutter: clamp(24px, 3.4vw, 72px);
-  --display: clamp(48px, 6.7vw, 100px);
+  --display: clamp(48px, 6.7vw, 114px);
   --tracking: -0.03em;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --header-height: 112px;
   --hero-slide-start-scale: 1.1;
   box-sizing: border-box;
   padding: 0 var(--page-frame-inset);
@@ -121,20 +120,21 @@
   cursor: pointer;
   letter-spacing: 0.02em;
 }
-:is(.grf-hero, .grf-support) .nav-label {
+:is(.grf-hero, .grf-support, .section-placeholder) .nav-label {
   display: grid;
   height: 30px;
   overflow: hidden;
   padding-inline: 4px;
 }
-:is(.grf-hero, .grf-support) :is(.nav-label-ko, .nav-label-en) {
+:is(.grf-hero, .grf-support, .section-placeholder)
+  :is(.nav-label-ko, .nav-label-en) {
   grid-area: 1 / 1;
   display: block;
   line-height: 30px;
   text-align: center;
   transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-:is(.grf-hero, .grf-support) .nav-label-en {
+:is(.grf-hero, .grf-support, .section-placeholder) .nav-label-en {
   font-family: Forum, serif;
   font-size: 18px;
   font-weight: 400;
@@ -144,17 +144,21 @@
   color: inherit;
   transform: translateY(110%);
 }
-:is(.grf-hero, .grf-support) :is(.nav-item, .join):is(:hover, :focus-visible) .nav-label-ko {
+:is(.grf-hero, .grf-support, .section-placeholder)
+  :is(.nav-item, .join):is(:hover, :focus-visible)
+  .nav-label-ko {
   transform: translateY(-110%);
 }
-:is(.grf-hero, .grf-support) :is(.nav-item, .join):is(:hover, :focus-visible) .nav-label-en {
+:is(.grf-hero, .grf-support, .section-placeholder)
+  :is(.nav-item, .join):is(:hover, :focus-visible)
+  .nav-label-en {
   transform: translateY(0);
 }
 .grf-hero .nav-item:focus-visible {
   outline: 1px solid #a7957d;
   outline-offset: 0;
 }
-:is(.grf-hero, .grf-support) .join {
+:is(.grf-hero, .grf-support, .section-placeholder) .join {
   display: flex;
   align-items: center;
   gap: 32px;
@@ -170,16 +174,19 @@
   cursor: pointer;
   transition: border-color 450ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-:is(.grf-hero, .grf-support) .join-arrow {
+:is(.grf-hero, .grf-support, .section-placeholder) .join-arrow {
   display: block;
   font-size: 23px;
   font-weight: 400;
   transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-:is(.grf-hero, .grf-support) .join:is(:hover, :focus-visible) {
+:is(.grf-hero, .grf-support, .section-placeholder)
+  .join:is(:hover, :focus-visible) {
   border-bottom-color: color-mix(in srgb, #a7957d 50%, transparent);
 }
-:is(.grf-hero, .grf-support) .join:is(:hover, :focus-visible) .join-arrow {
+:is(.grf-hero, .grf-support, .section-placeholder)
+  .join:is(:hover, :focus-visible)
+  .join-arrow {
   transform: translate(3px, -3px);
 }
 
@@ -431,11 +438,7 @@
   }
 }
 @media (max-width: 1199px) {
-  .grf-hero {
-    --header-height: 96px;
-  }
   .grf-hero .header {
-    height: 96px;
     gap: 20px;
   }
   .grf-hero .brand {
@@ -472,13 +475,13 @@
   .grf-hero .nav-item {
     font-size: 12px;
   }
-  :is(.grf-hero, .grf-support) .nav-label-en {
+  :is(.grf-hero, .grf-support, .section-placeholder) .nav-label-en {
     font-size: 19px;
   }
   .grf-hero .brand {
     font-size: 22px;
   }
-  :is(.grf-hero, .grf-support) .join {
+  :is(.grf-hero, .grf-support, .section-placeholder) .join {
     font-size: 12px;
     gap: 14px;
   }
@@ -493,16 +496,10 @@
   }
 }
 @media (max-width: 767px) {
-  .grf-hero {
-    --header-height: 92px;
-  }
-  .grf-hero .header {
-    height: 92px;
-  }
   .grf-hero .ribbon-nav {
     display: none;
   }
-  :is(.grf-hero, .grf-support) .join {
+  :is(.grf-hero, .grf-support, .section-placeholder) .join {
     gap: 24px;
     font-size: 13px;
   }
@@ -693,7 +690,9 @@
   gap: 5px;
   min-height: 44px;
   padding: 4px 0;
-  font: 400 13px/1 Forum, serif;
+  font:
+    400 13px/1 Forum,
+    serif;
   text-align: center;
 }
 .grf-hero .hero-carousel-track {
@@ -760,12 +759,16 @@
   .grf-hero.intro-start-preview:not(.logo-revealed) .intro-logo-reveal {
     clip-path: none;
   }
-  .grf-support .join,
-  .grf-support .join :is(.nav-label-ko, .nav-label-en, .join-arrow) {
+  :is(.grf-support, .section-placeholder) .join,
+  :is(.grf-support, .section-placeholder)
+    .join
+    :is(.nav-label-ko, .nav-label-en, .join-arrow) {
     transition: none;
   }
   .grf-hero .scroll-cue:is(:hover, :focus-visible) .scroll-arrow,
-  :is(.grf-hero, .grf-support) .join:is(:hover, :focus-visible) .join-arrow {
+  :is(.grf-hero, .grf-support, .section-placeholder)
+    .join:is(:hover, :focus-visible)
+    .join-arrow {
     transform: none;
   }
 }

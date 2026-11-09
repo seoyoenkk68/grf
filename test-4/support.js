@@ -34,6 +34,7 @@
     active = false;
     generation++;
     section.classList.add('is-resetting');
+    section.classList.remove('is-final-frame');
     section.classList.remove('is-title-visible', 'is-focused', 'is-details-visible', 'is-benefit-summary-visible', 'is-details-button-visible', 'is-scroll-cue-visible');
     details.inert = true;
     details.setAttribute('aria-hidden', 'true');
@@ -69,11 +70,18 @@
     section.classList.add('is-scroll-cue-visible');
   }
   function finish() {
+    active = true;
     generation++;
     section.classList.add('is-title-visible', 'is-focused', 'is-details-visible', 'is-benefit-summary-visible', 'is-details-button-visible', 'is-scroll-cue-visible');
     details.inert = false;
     details.removeAttribute('aria-hidden');
   }
+  section.addEventListener('support:show-final', () => {
+    section.classList.add('is-resetting', 'is-final-frame');
+    finish();
+    section.getBoundingClientRect();
+    section.classList.remove('is-resetting');
+  });
   section.classList.add('is-motion-ready');
   reset();
   const entryObserver = new IntersectionObserver(entries => {
@@ -83,5 +91,6 @@
     if (entries.some(entry => !entry.isIntersecting)) reset();
   }, { rootMargin: '-1px 0px -1px 0px', threshold: 0 });
   entryObserver.observe(section);
-  exitObserver.observe(section);
+  // A horizontal slide keeps the support scene ready for the return trip.
+  exitObserver.observe(section.closest('.section-spread') || section);
 })();

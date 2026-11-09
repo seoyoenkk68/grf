@@ -11,6 +11,8 @@
   --page-frame-width: 2560px;
   --page-frame-inset: 16px;
   --page-header-gutter: clamp(24px, 3.4vw, 72px);
+  --header-height: 112px;
+  --section-title-copy-gap: 36px;
   --paper: #f5f1e8;
   --ink: #34382f;
   --gold: #e7b149;
@@ -23,8 +25,13 @@
   font-family: Pretendard, "Malgun Gothic", sans-serif;
   font-synthesis: none;
 }
+@media (max-width: 1199px) {
+  .grf-page { --header-height: 96px; }
+}
 @media (max-width: 767px) {
   .grf-page {
+    --header-height: 92px;
+    --section-title-copy-gap: 28px;
     --page-frame-inset: 12px;
     --page-header-gutter: calc(var(--page-frame-inset) + 10px);
   }
@@ -36,11 +43,10 @@
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
 }
-.grf-page .section-placeholder {
-  height: 100vh;
-  background: var(--paper);
+.grf-page .section-fifth {
+  min-height: 100svh;
+  min-height: 100dvh;
 }
-
 .grf-page .section-indicator {
   position: fixed;
   z-index: 90;
@@ -102,7 +108,7 @@
 }
 @media (min-width: 768px) {
   .grf-page:has(.grf-support.is-motion-ready:not(.is-focused))
-    .section-indicator {
+    .section-indicator:has([data-scroll-target="support"][aria-current="location"]) {
     color: var(--paper);
   }
 }
