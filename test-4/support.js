@@ -7,8 +7,9 @@
   const visual = section.querySelector('.support-visual');
   const details = section.querySelector('.support-details');
   const introduction = section.querySelector('.support-introduction');
+  const benefitBoxes = [...section.querySelectorAll('.support-benefit-box')];
+  const detailsButton = section.querySelector('.support-details-button');
   const heading = section.querySelector('h2');
-  const cta = section.querySelector('.support-cta');
   let active = false, generation = 0;
   const settled = element => Promise.all(element.getAnimations().map(animation => animation.finished.catch(() => {})));
   function syncSubject() {
@@ -18,26 +19,24 @@
     const renderedWidth = photo.naturalWidth * scale;
     const objectPosition = matchMedia('(max-width: 767px)').matches ? .58 : .55;
     const subjectX = renderedWidth * .55 - (renderedWidth - width) * objectPosition;
-    section.style.setProperty('--support-photo-shift', (width * .825 - subjectX) + 'px');
+    const maskStart = parseFloat(getComputedStyle(section).getPropertyValue('--support-photo-start')) / 100;
+    const maskCenter = width * (maskStart + 1) / 2;
+    section.style.setProperty('--support-photo-shift', (maskCenter - subjectX) + 'px');
   }
   photo.addEventListener('load', syncSubject);
   addEventListener('resize', syncSubject);
   syncSubject();
   if (section.dataset.motionPreview === 'final') {
-    section.classList.add('is-title-visible', 'is-focused', 'is-cta-visible');
+    section.classList.add('is-title-visible', 'is-focused');
     return;
   }
   function reset() {
     active = false;
     generation++;
     section.classList.add('is-resetting');
-    section.classList.remove('is-title-visible', 'is-focused', 'is-details-visible', 'is-cards-visible', 'is-cta-visible');
+    section.classList.remove('is-title-visible', 'is-focused', 'is-details-visible', 'is-benefit-summary-visible', 'is-details-button-visible', 'is-scroll-cue-visible');
     details.inert = true;
     details.setAttribute('aria-hidden', 'true');
-    if (cta) {
-      cta.style.setProperty('--mag-x', '0px');
-      cta.style.setProperty('--mag-y', '0px');
-    }
     section.getBoundingClientRect();
     section.classList.remove('is-resetting');
   }
@@ -57,23 +56,21 @@
     await Promise.all([settled(visual), settled(photo), settled(heading)]);
     if (id !== generation) return;
     section.classList.add('is-details-visible');
+    details.inert = false;
     details.removeAttribute('aria-hidden');
     await settled(introduction);
     if (id !== generation) return;
-    details.inert = false;
-    section.classList.add('is-cards-visible');
-    await new Promise(resolve => setTimeout(resolve, 60));
+    section.classList.add('is-benefit-summary-visible');
+    await Promise.all(benefitBoxes.map(settled));
     if (id !== generation) return;
-    const cards = section.querySelectorAll('.support-card');
-    await Promise.all([...cards].map(settled));
+    section.classList.add('is-details-button-visible');
+    await settled(detailsButton);
     if (id !== generation) return;
-    await new Promise(resolve => setTimeout(resolve, 250));
-    if (id !== generation) return;
-    section.classList.add('is-cta-visible');
+    section.classList.add('is-scroll-cue-visible');
   }
   function finish() {
     generation++;
-    section.classList.add('is-title-visible', 'is-focused', 'is-details-visible', 'is-cards-visible', 'is-cta-visible');
+    section.classList.add('is-title-visible', 'is-focused', 'is-details-visible', 'is-benefit-summary-visible', 'is-details-button-visible', 'is-scroll-cue-visible');
     details.inert = false;
     details.removeAttribute('aria-hidden');
   }
@@ -87,21 +84,4 @@
   }, { rootMargin: '-1px 0px -1px 0px', threshold: 0 });
   entryObserver.observe(section);
   exitObserver.observe(section);
-  if (cta && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    let bound = null;
-    const updateBound = () => { bound = cta.getBoundingClientRect(); };
-    cta.addEventListener('pointerenter', updateBound);
-    cta.addEventListener('pointermove', e => {
-      if (!bound) updateBound();
-      const relX = e.clientX - (bound.left + bound.width / 2);
-      const relY = e.clientY - (bound.top + bound.height / 2);
-      cta.style.setProperty('--mag-x', `${(relX * 0.28).toFixed(1)}px`);
-      cta.style.setProperty('--mag-y', `${(relY * 0.28).toFixed(1)}px`);
-    });
-    cta.addEventListener('pointerleave', () => {
-      cta.style.setProperty('--mag-x', '0px');
-      cta.style.setProperty('--mag-y', '0px');
-      bound = null;
-    });
-  }
 })();

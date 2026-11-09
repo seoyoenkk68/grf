@@ -47,17 +47,35 @@
   let visible = false;
   let paused = reduced.matches;
   let progress;
+  let zoom;
+
+  function prepareZoom(image) {
+    if (reduced.matches) return;
+    const animation = image.animate(
+      [{ transform: 'scale(var(--hero-slide-start-scale))' }, { transform: 'scale(1)' }],
+      { duration: displayTime, fill: 'both' },
+    );
+    animation.pause();
+    animation.currentTime = 0;
+    return animation;
+  }
 
   function syncPlayback() {
     playback.classList.toggle('is-paused', paused);
     playback.setAttribute('aria-label', paused ? '자동 재생 시작' : '자동 재생 일시 정지');
     if (!progress || progress.playState === 'finished') return;
-    if (paused || !visible || document.hidden) progress.pause();
-    else progress.play();
+    if (paused || !visible || document.hidden) {
+      progress.pause();
+      zoom?.pause();
+    } else {
+      progress.play();
+      zoom?.play();
+    }
   }
 
   function startProgress() {
     progress?.cancel();
+    zoom ??= prepareZoom(images[current]);
     progress = tracks[current].animate(
       [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
       { duration: displayTime, fill: 'both' },
@@ -81,6 +99,8 @@
     changing = true;
     progress?.cancel();
     progress = null;
+    const previousZoom = zoom;
+    previousZoom?.pause();
     const animate = !reduced.matches;
 
     if (animate) {
@@ -99,6 +119,7 @@
     buttons[current].removeAttribute('aria-current');
     current = target;
     const image = images[current];
+    zoom = prepareZoom(image);
     image.classList.add('is-current');
     image.removeAttribute('aria-hidden');
     buttons[current].setAttribute('aria-current', 'true');
@@ -120,9 +141,11 @@
       ];
       await entrances[0].finished;
       previous.classList.remove('is-previous');
+      previousZoom?.cancel();
       await Promise.all(entrances.map(entrance => entrance.finished));
     } else {
       previous.classList.remove('is-previous');
+      previousZoom?.cancel();
     }
 
     changing = false;
@@ -150,7 +173,11 @@
     syncPlayback();
   });
   reduced.addEventListener('change', () => {
-    if (reduced.matches) paused = true;
+    if (reduced.matches) {
+      paused = true;
+      zoom?.cancel();
+      zoom = undefined;
+    }
     syncPlayback();
   });
   document.addEventListener('visibilitychange', syncPlayback);

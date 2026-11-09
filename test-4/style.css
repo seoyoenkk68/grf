@@ -8,14 +8,101 @@
   font-display: swap;
 }
 .grf-page {
+  --page-frame-width: 2560px;
+  --page-frame-inset: 16px;
+  --page-header-gutter: clamp(24px, 3.4vw, 72px);
   --paper: #f5f1e8;
   --ink: #34382f;
   --gold: #e7b149;
   --ink-muted: #676b60;
   --border: #34382f55;
+  --fine-rule: color-mix(in srgb, currentColor 50%, transparent);
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: Pretendard, "Malgun Gothic", sans-serif;
   font-synthesis: none;
+}
+@media (max-width: 767px) {
+  .grf-page {
+    --page-frame-inset: 12px;
+    --page-header-gutter: calc(var(--page-frame-inset) + 10px);
+  }
+}
+
+.grf-page .section-spread {
+  display: grid;
+  grid-template-columns: repeat(2, 100%);
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+.grf-page .section-placeholder {
+  height: 100vh;
+  background: var(--paper);
+}
+
+.grf-page .section-indicator {
+  position: fixed;
+  z-index: 90;
+  left: var(--page-header-gutter);
+  bottom: 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+
+  margin-inline: auto;
+  padding: 0 10px;
+
+  border-radius: 100px;
+  color: #908671;
+  pointer-events: none;
+  max-width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.grf-page .section-indicator[hidden] {
+  display: none;
+}
+.grf-page .section-indicator button {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.grf-page .section-indicator button::before {
+  content: "";
+  box-sizing: border-box;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #b3aa97;
+  border-radius: 50%;
+}
+.grf-page .section-indicator button:is(:hover, [aria-current])::before {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  /*background: linear-gradient(145deg, #f8e4aa, var(--gold) 48%, #956222); background-color: #b3aa97;*/
+
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.grf-page .section-indicator button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: -5px;
+}
+.grf-page .section-indicator-label {
+  font:
+    400 12px/1 Forum,
+    serif;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 768px) {
+  .grf-page:has(.grf-support.is-motion-ready:not(.is-focused))
+    .section-indicator {
+    color: var(--paper);
+  }
 }

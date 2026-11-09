@@ -50,7 +50,7 @@
       if(!current())return;
       const duration=mobile.matches?1700:2400,easing='cubic-bezier(.65,0,.25,1)';
       const opening=motion(mask,[{clipPath:mobile.matches?'inset(12% 16% round 16px)':'inset(24% 34% round 24px)'},{clipPath:'inset(0% 0% round 0px)'}],duration,0,easing);
-      const zoom=motion(image,[{transform:`scale(${mobile.matches?.97:.92})`},{transform:'scale(1)'}],duration,0,easing);
+      const zoom=motion(image,[{transform:`scale(${mobile.matches?.97:.92})`},{transform:'scale(var(--hero-slide-start-scale))'}],duration,0,easing);
       opening.startTime=zoom.startTime=document.timeline.currentTime;
       await Promise.all([opening.finished,zoom.finished]);
       if(!current())return;hero.classList.add('mask-expanded','headline-entering');hero.classList.remove('mask-expanding');

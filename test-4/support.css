@@ -13,6 +13,7 @@
 .grf-support {
   --support-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --support-header-height: 112px;
+  --support-photo-start: 60%;
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -54,10 +55,50 @@
   opacity: 1;
   transition: transform 1600ms cubic-bezier(0.45, 0, 0.2, 1);
 }
+.grf-support .support-title-row {
+  display: grid;
+}
+.grf-support .support-title-row > * {
+  grid-area: 1 / 1;
+}
+.grf-support .support-intro-english {
+  justify-self: end;
+  align-self: center;
+  margin: 34px 0 0;
+  color: var(--gold);
+  font:
+    italic 400 clamp(50px, 7.7vw, 144px)/0.94 Forum,
+    serif;
+  font-synthesis: style;
+  letter-spacing: -0.025em;
+  text-align: right;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 580ms ease,
+    transform 820ms var(--support-ease);
+}
+.grf-support.is-motion-ready.is-title-visible:not(.is-focused)
+  .support-intro-english {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 450ms;
+}
+.grf-support.is-focused .support-intro-english {
+  transform: translate(16px, -10px);
+}
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .grf-support .support-intro-english {
+    display: none;
+  }
+}
 .grf-support .support-copy {
   position: relative;
   z-index: 1;
   padding: clamp(160px, 28svh, 360px) clamp(28px, 4.5vw, 90px) 48px;
+  opacity: var(--support-copy-opacity, 1);
   transition: color 1200ms ease;
 }
 .grf-support .support-header-row {
@@ -81,8 +122,7 @@
 .grf-support .support-kicker span {
   width: 28px;
   height: 1px;
-  background: currentColor;
-  opacity: 0.5;
+  background: var(--fine-rule);
 }
 .grf-support .support-header-line {
   flex: 1;
@@ -228,10 +268,10 @@
     color 350ms ease;
 }
 .grf-support.is-focused .support-visual {
-  clip-path: inset(0% 0% 0% 65%);
+  clip-path: inset(0% 0% 0% var(--support-photo-start));
 }
 .grf-support.is-focused .support-photo {
-  transform: translate3d(var(--support-photo-shift, 27.5vw), 0, 0);
+  transform: translate3d(var(--support-photo-shift, 25vw), 0, 0);
   opacity: 1;
 }
 .grf-support.is-cards-visible .support-visual {
@@ -289,15 +329,187 @@
   padding: calc(var(--support-header-height) + 40px) var(--support-gutter) 110px;
 }
 .grf-support[data-support-layout="cards"] h2 {
-  max-width: 63%;
+  max-width: var(--support-photo-start);
   margin-top: 24px;
   transform: none;
   font-weight: 700;
-  font-size: clamp(26px, 2.1vw, 38px);
+  font-size: clamp(26px, 2.6vw, 50px);
   line-height: 1.45;
 }
 .grf-support .support-details {
   margin-top: 28px;
+}
+.grf-support .support-benefit-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px clamp(12px, 2vw, 15px);
+  max-width: 40%;
+  margin: clamp(14px, 4svh, 30px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.grf-support .support-benefit-summary li {
+  display: grid;
+  overflow: hidden;
+}
+.grf-support .support-benefit-box {
+  display: grid;
+  gap: 2px;
+  align-content: start;
+  padding-top: 7px;
+  border-left: 2px solid #dcd3c7;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  font-size: clamp(12px, 1.05vw, 15px);
+  line-height: 1.5;
+  word-break: keep-all;
+  padding: 12px 20px;
+  /*background: #efebe1;*/
+}
+.grf-support .support-benefit-summary span {
+  color: var(--ink-muted);
+}
+.grf-support .support-benefit-box strong {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 6px;
+}
+.grf-support .support-benefit-box .support-benefit-number {
+  display: inline-grid;
+  grid-template-columns: 2ch 10px;
+  align-items: center;
+  column-gap: 6px;
+  color: #796037;
+  font:
+    400 1.2em/1 Forum,
+    serif;
+}
+.grf-support .support-benefit-number::after {
+  content: "";
+  height: 1px;
+  background: var(--fine-rule);
+}
+.grf-support.is-motion-ready:not(.is-benefit-summary-visible)
+  .support-benefit-summary {
+  visibility: hidden;
+}
+.grf-support.is-benefit-summary-visible .support-benefit-box {
+  animation: support-benefit-rise 700ms var(--support-ease) both;
+}
+.grf-support .support-benefit-summary li:nth-child(2) .support-benefit-box {
+  animation-delay: 130ms;
+}
+.grf-support .support-benefit-summary li:nth-child(3) .support-benefit-box {
+  animation-delay: 260ms;
+}
+.grf-support .support-benefit-summary li:nth-child(4) .support-benefit-box {
+  animation-delay: 390ms;
+}
+@keyframes support-benefit-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.grf-support .support-details-button {
+  margin-top: clamp(28px, 9svh, 90px);
+}
+.grf-support.is-motion-ready:not(.is-details-button-visible)
+  .support-details-button {
+  visibility: hidden;
+}
+.grf-support.is-details-button-visible .support-details-button {
+  animation: support-detail-enter 600ms var(--support-ease) both;
+}
+.grf-support .support-scroll-cue {
+  --support-cue-opacity: 0.2;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  inset-inline-end: calc(100% - var(--support-photo-start) + 6px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  opacity: calc(var(--support-cue-opacity) * var(--support-copy-opacity, 1));
+  transform: translateY(-50%);
+  text-transform: uppercase;
+}
+.grf-support .support-scroll-cue span {
+  writing-mode: sideways-lr;
+  text-orientation: sideways;
+  white-space: nowrap;
+  font:
+    600 11px/1 pretendard,
+    serif;
+  letter-spacing: 0.05em;
+}
+.grf-support .support-scroll-cue svg {
+  width: 12px;
+  height: 20px;
+  transition: transform 450ms var(--support-ease);
+}
+.grf-support .support-scroll-cue path {
+  animation: support-chevron-flow 1.65s ease-in-out 420ms infinite both;
+}
+.grf-support .support-scroll-cue path:nth-child(2) {
+  animation-delay: 560ms;
+}
+.grf-support .support-scroll-cue path:nth-child(3) {
+  animation-delay: 700ms;
+}
+@keyframes support-chevron-flow {
+  0%,
+  60%,
+  100% {
+    opacity: 0.32;
+  }
+  26% {
+    opacity: 1;
+  }
+}
+.grf-support .support-scroll-cue:is(:hover, :focus-visible) svg {
+  transform: translateY(5px);
+}
+.grf-support .support-scroll-cue:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+@media (min-width: 768px) {
+  .grf-support.is-scroll-cue-visible .support-scroll-cue {
+    display: flex;
+    animation: support-scroll-cue-enter 560ms var(--support-ease) backwards;
+  }
+}
+@keyframes support-scroll-cue-enter {
+  from {
+    opacity: 0;
+    transform: translate(20px, -50%);
+  }
+  to {
+    opacity: calc(var(--support-cue-opacity) * var(--support-copy-opacity, 1));
+    transform: translateY(-50%);
+  }
+}
+@keyframes support-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .grf-support:not(.is-focused) .support-details {
   visibility: hidden;
@@ -421,12 +633,11 @@
     --support-gutter: 24px;
   }
   .grf-support[data-support-layout="cards"] .support-copy {
-    padding-top: 124px;
+    padding-top: 112px;
     padding-bottom: 70px;
   }
   .grf-support[data-support-layout="cards"] h2 {
     max-width: none;
-    font-size: 27px;
     margin-top: 24px;
   }
   .grf-support .support-header-row {
@@ -451,6 +662,9 @@
     line-height: 20px;
   }
   .grf-support .support-introduction {
+    max-width: none;
+  }
+  .grf-support .support-benefit-summary {
     max-width: none;
   }
   .grf-support .support-benefits {
@@ -498,7 +712,7 @@
     align-items: center;
     height: 100%;
     min-height: 0;
-    padding-block: calc(var(--support-header-height) + 16px) 16px;
+    padding-block: calc(var(--support-header-height) + 16px) calc(16px + 10svh);
   }
   .grf-support[data-support-layout="cards"] .support-copy {
     display: block;
@@ -509,7 +723,6 @@
   .grf-support[data-support-layout="cards"] h2 {
     margin-top: 34px;
     font-weight: 700;
-    font-size: clamp(26px, 2.1vw, 38px);
     line-height: 1.45;
   }
   .grf-support .support-details {
@@ -608,7 +821,7 @@
 }
 /* Motion states only. Keep the user's card layout and type values intact. */
 .grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 {
-  transform: scale(1.388889);
+  transform: scale(1.12);
 }
 .grf-support[data-motion-preview="live"].is-motion-ready .support-details {
   visibility: visible;
@@ -649,6 +862,20 @@
   transition-delay: 900ms;
 }
 @media (prefers-reduced-motion: reduce) {
+  .grf-support.is-scroll-cue-visible .support-scroll-cue,
+  .grf-support .support-scroll-cue path {
+    animation: none;
+  }
+  .grf-support .support-scroll-cue svg {
+    transition: none;
+  }
+  .grf-support .support-scroll-cue:is(:hover, :focus-visible) svg {
+    transform: none;
+  }
+  .grf-support.is-benefit-summary-visible .support-benefit-box,
+  .grf-support.is-details-button-visible .support-details-button {
+    animation: none;
+  }
   .grf-scroll-test {
     scroll-behavior: auto;
   }
