@@ -166,7 +166,8 @@
     if (moving || continuing) { event.preventDefault(); return; }
     let target;
     if (atFifth) {
-      if (direction < 0) target = fourth;
+      if (direction < 0 && fifth.getBoundingClientRect().top >= -1) target = fourth;
+      else lastWheel = -Infinity;
     } else if (atFourth) {
       if (direction > 0) {
         if (!fourth.dispatchEvent(new Event('people:advance', { cancelable: true }))) {
@@ -248,7 +249,9 @@
     if (touchStart.inFourth && dy < 0 && fourth.getBoundingClientRect().top >= -1) {
       touchStart.verticalTarget = panels.at(-1);
     }
-    if (touchStart.inFifth && dy < 0) touchStart.verticalTarget = fourth;
+    if (touchStart.inFifth && dy < 0 && fifth.getBoundingClientRect().top >= -1) {
+      touchStart.verticalTarget = fourth;
+    }
     if (touchStart.inSpread && activePanel === panels.length - 1 && dy > 0
       && !canScrollOceanCopy(event.target, 1)) touchStart.verticalTarget = fourth;
     const advancingPeople = touchStart.inFourth && dy > 0
