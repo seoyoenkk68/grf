@@ -1,0 +1,1025 @@
+/* Page transition foundations; keep hero layout unchanged. */
+.grf-scroll-test {
+  scroll-behavior: auto;
+  scrollbar-gutter: stable;
+}
+.grf-scroll-test.grf-intro-locked,
+.grf-scroll-test.grf-intro-locked body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* Support / full-screen photographic opening. Local study values only. */
+.grf-support {
+  --support-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --support-header-height: 112px;
+  --support-photo-start: 60%;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  height: 100vh;
+  height: 100svh;
+  color: #fff;
+  background: var(--paper);
+}
+.grf-support * {
+  box-sizing: border-box;
+}
+.grf-support p,
+.grf-support h2,
+.grf-support figure {
+  margin: 0;
+}
+.grf-support .support-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.grf-support .support-monogram {
+  position: absolute;
+  inset-inline-end: calc(
+    100% - var(--support-photo-start) - clamp(8px, 3.8vw, 77px)
+  );
+  bottom: 3%;
+  width: 1.36em;
+  height: 1.55em;
+  color: var(--ink);
+  font:
+    400 clamp(94px, min(12.6vw, 26svh), 255px)/0.9 Forum,
+    serif;
+  opacity: 0.02;
+  pointer-events: none;
+  user-select: none;
+}
+.grf-support .support-monogram span {
+  position: absolute;
+}
+.grf-support .support-monogram span:first-child {
+  inset: 0 auto auto 0;
+}
+.grf-support .support-monogram span:nth-child(2) {
+  top: 0.34em;
+  left: 0.6em;
+  font-size: 1.04em;
+}
+.grf-support .support-monogram span:nth-child(3) {
+  bottom: -1.9rem;
+  left: 0.2em;
+  font-size: 1.04em;
+}
+@media (max-width: 767px) {
+  .grf-support .support-monogram {
+    display: none;
+  }
+}
+.grf-support .support-visual {
+  position: absolute;
+  inset: var(--support-header-height) 0 0;
+  clip-path: inset(0% 0% 0% 0%);
+  transition: clip-path 1600ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+.grf-support .support-image-window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.grf-support .support-benefit-photo {
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 0 auto;
+  width: calc(100% - var(--support-photo-start));
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 620ms ease-in-out;
+}
+@media (hover: hover) {
+  .grf-support.is-benefit-summary-visible:has(
+      .support-benefit-summary li:nth-child(1) .support-benefit-box:hover
+    )
+    .support-benefit-photo:nth-of-type(2),
+  .grf-support.is-benefit-summary-visible:has(
+      .support-benefit-summary li:nth-child(2) .support-benefit-box:hover
+    )
+    .support-benefit-photo:nth-of-type(3),
+  .grf-support.is-benefit-summary-visible:has(
+      .support-benefit-summary li:nth-child(3) .support-benefit-box:hover
+    )
+    .support-benefit-photo:nth-of-type(4),
+  .grf-support.is-benefit-summary-visible:has(
+      .support-benefit-summary li:nth-child(4) .support-benefit-box:hover
+    )
+    .support-benefit-photo:nth-of-type(5) {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grf-support .support-benefit-photo {
+    transition: none;
+  }
+}
+.grf-support .support-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 50%;
+  opacity: 1;
+  transition: transform 1600ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+.grf-support .support-title-row {
+  display: grid;
+}
+.grf-support .support-title-row > * {
+  grid-area: 1 / 1;
+}
+.grf-support .support-intro-english {
+  justify-self: end;
+  align-self: center;
+  margin: 34px 0 0;
+  color: var(--gold);
+  font:
+    italic 400 var(--section-intro-word-size)/0.94 Forum,
+    serif;
+  font-synthesis: style;
+  letter-spacing: -0.025em;
+  text-align: right;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 580ms ease,
+    transform 820ms var(--support-ease);
+}
+.grf-support.is-motion-ready.is-title-visible:not(.is-focused)
+  .support-intro-english {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 450ms;
+}
+.grf-support.is-focused .support-intro-english {
+  transform: translate(16px, -10px);
+}
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .grf-support .support-intro-english {
+    display: none;
+  }
+}
+.grf-support .support-copy {
+  position: relative;
+  z-index: 1;
+  padding: clamp(160px, 28svh, 360px) clamp(28px, 4.5vw, 90px) 48px;
+  opacity: var(--support-copy-opacity, 1);
+  transition: color 1200ms ease;
+}
+.grf-support .support-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+.grf-support .support-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font:
+    400 18px/1.3 Forum,
+    serif;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.grf-support .support-kicker span {
+  width: 28px;
+  height: 1px;
+  background: var(--fine-rule);
+}
+.grf-support .support-header-line {
+  flex: 1;
+  height: 1px;
+  background: #dcd3c7;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 950ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.grf-support .support-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  background: rgba(245, 241, 232, 0.95);
+  backdrop-filter: blur(12px);
+  color: var(--ink);
+  font:
+    600 14px/1.4 Pretendard,
+    "Malgun Gothic",
+    sans-serif;
+  letter-spacing: -0.015em;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: none;
+  will-change: transform;
+  transition:
+    opacity 800ms ease,
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 350ms ease,
+    border-color 350ms ease,
+    box-shadow 350ms ease,
+    color 350ms ease;
+}
+.grf-support .support-cta-label {
+  display: grid;
+  height: 24px;
+  overflow: hidden;
+  padding-inline: 2px;
+}
+.grf-support .support-cta-ko,
+.grf-support .support-cta-en {
+  grid-area: 1 / 1;
+  display: block;
+  line-height: 24px;
+  text-align: center;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.grf-support .support-cta-en {
+  font-family: Forum, serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  font-synthesis: style;
+  letter-spacing: -0.01em;
+  color: #e7b149;
+  transform: translateY(115%);
+}
+.grf-support .support-cta:is(:hover, :focus-visible) {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #f5f1e8;
+  box-shadow: 0 8px 26px rgba(52, 56, 47, 0.2);
+}
+.grf-support .support-cta:is(:hover, :focus-visible) .support-cta-ko {
+  transform: translateY(-115%);
+}
+.grf-support .support-cta:is(:hover, :focus-visible) .support-cta-en {
+  transform: translateY(0);
+}
+.grf-support .support-cta-arrow {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #9b8768;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 350ms ease;
+}
+.grf-support .support-cta:is(:hover, :focus-visible) .support-cta-arrow {
+  transform: translate(3px, -3px) rotate(45deg);
+  color: #e7b149;
+}
+.grf-support .support-cta:active {
+  transform: scale(0.97) translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+}
+.grf-support h2 {
+  margin-top: 32px;
+  font:
+    700 var(--section-title-size)/1.45 Pretendard,
+    "Malgun Gothic",
+    sans-serif;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+  transform-origin: left top;
+  transition: transform 1600ms cubic-bezier(0.45, 0, 0.2, 1);
+  line-height: 1.45;
+}
+.grf-support .support-title-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.06em;
+  margin-block: -0.06em;
+}
+.grf-support .support-title-line > span {
+  display: block;
+}
+/* Content remains readable without JavaScript. */
+.grf-support.is-motion-ready .support-kicker {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 1000ms var(--support-ease);
+}
+.grf-support.is-motion-ready .support-title-line > span {
+  transform: translateY(115%);
+  transition: transform 1200ms var(--support-ease);
+}
+.grf-support.is-motion-ready .support-cta {
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+}
+.grf-support.is-cta-visible .support-header-line {
+  transform: scaleX(1);
+}
+.grf-support.is-cta-visible .support-cta {
+  opacity: 1;
+  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+  pointer-events: auto;
+  transition:
+    opacity 650ms ease 300ms,
+    transform 750ms cubic-bezier(0.16, 1, 0.3, 1) 300ms,
+    background 350ms ease,
+    border-color 350ms ease,
+    box-shadow 350ms ease,
+    color 350ms ease;
+}
+.grf-support.is-focused .support-visual {
+  clip-path: inset(0% 0% 0% var(--support-photo-start));
+}
+.grf-support.is-focused .support-photo {
+  transform: translate3d(var(--support-photo-shift, 25vw), 0, 0);
+  opacity: 1;
+}
+.grf-support.is-cards-visible .support-visual {
+  clip-path: inset(0% 0% 0% 100%);
+  pointer-events: none;
+  transition: clip-path 1600ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+.grf-support.is-cards-visible .support-photo {
+  transform: translate3d(calc(var(--support-photo-shift, 27.5vw) + 15vw), 0, 0);
+  transition: transform 1600ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+.grf-support.is-focused .support-copy {
+  color: var(--ink);
+}
+.grf-support.is-focused h2 {
+  transform: scale(0.72);
+}
+.grf-support.is-title-visible .support-kicker {
+  opacity: 1;
+  transform: translateY(0);
+}
+.grf-support.is-title-visible .support-title-line > span {
+  transform: translateY(0);
+  transition-delay: 120ms;
+}
+.grf-support.is-title-visible .support-title-line:nth-child(2) > span {
+  transition-delay: 280ms;
+}
+.grf-support.is-resetting * {
+  transition: none !important;
+}
+/* Temporary editing mode: keep the final composition, retain the motion code. */
+.grf-support[data-motion-preview="final"] *,
+.grf-support[data-motion-preview="final"] *::before,
+.grf-support[data-motion-preview="final"] *::after {
+  transition: none !important;
+  animation: none !important;
+}
+/* Static card study. Key images will be supplied later; no substitute artwork. */
+.grf-support[data-support-layout="cards"] {
+  --support-gutter: clamp(28px, 4.5vw, 90px);
+  height: auto;
+  min-height: 100svh;
+}
+.grf-support[data-support-layout="cards"] .support-container {
+  min-height: 100svh;
+}
+.grf-support[data-support-layout="cards"] .support-visual {
+  bottom: auto;
+  height: calc(100svh - var(--support-header-height));
+}
+.grf-support[data-support-layout="cards"] .support-copy {
+  width: 100%;
+  min-height: 100svh;
+  padding: calc(var(--support-header-height) + 40px) var(--support-gutter) 110px;
+}
+.grf-support[data-support-layout="cards"] h2 {
+  max-width: var(--support-photo-start);
+  margin-top: 24px;
+  transform: none;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.grf-support .support-details {
+  margin-top: var(--section-title-copy-gap);
+}
+.grf-support .support-benefit-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px clamp(12px, 2vw, 15px);
+  max-width: 40%;
+  margin: clamp(14px, 4svh, 30px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.grf-support .support-benefit-summary li {
+  display: grid;
+  overflow: hidden;
+  cursor: pointer;
+}
+.grf-support .support-benefit-box {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  align-content: start;
+  padding-top: 7px;
+  border-left: 2px solid #dcd3c7;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  font-size: clamp(12px, 1.05vw, 15px);
+  line-height: 1.5;
+  word-break: keep-all;
+  padding: 30px;
+  padding-inline: clamp(12px, 2vw, 30px) clamp(38px, 4vw, 56px);
+  transition: border-color 300ms var(--support-ease);
+}
+.grf-support .support-benefit-box .support-benefit-arrow {
+  position: absolute;
+  inset-inline-end: clamp(9px, 1.4vw, 24px);
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  /*border: 1px solid var(--fine-rule);*/
+  border-radius: 50%;
+  color: var(--ink-muted);
+  transform: translateY(-50%);
+  transition: color 300ms var(--support-ease);
+}
+.grf-support .support-benefit-arrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-block-start: 1px solid;
+  border-inline-end: 1px solid;
+  transform: translateX(-1px) rotate(45deg);
+}
+@media (hover: hover) {
+  .grf-support.is-benefit-summary-visible .support-benefit-box:hover {
+    border-color: color-mix(in srgb, #796037 32%, transparent);
+    border-left-color: #a58a57;
+  }
+  .grf-support.is-benefit-summary-visible
+    .support-benefit-box:hover
+    .support-benefit-arrow {
+    color: #a58a57;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grf-support .support-benefit-box,
+  .grf-support .support-benefit-box .support-benefit-arrow {
+    transition: none;
+  }
+}
+.grf-support .support-benefit-summary span {
+  color: var(--ink-muted);
+}
+.grf-support .support-benefit-box strong {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 6px;
+}
+.grf-support .support-benefit-box .support-benefit-number {
+  display: inline-grid;
+  grid-template-columns: 2ch 10px;
+  align-items: center;
+  column-gap: 6px;
+  color: #796037;
+  font:
+    400 1.2em/1 Forum,
+    serif;
+}
+.grf-support .support-benefit-number::after {
+  content: "";
+  height: 1px;
+  background: var(--fine-rule);
+}
+.grf-support.is-motion-ready:not(.is-benefit-summary-visible)
+  .support-benefit-summary {
+  visibility: hidden;
+}
+.grf-support.is-benefit-summary-visible .support-benefit-box {
+  animation: support-benefit-rise 700ms var(--support-ease) both;
+}
+.grf-support .support-benefit-summary li:nth-child(2) .support-benefit-box {
+  animation-delay: 130ms;
+}
+.grf-support .support-benefit-summary li:nth-child(3) .support-benefit-box {
+  animation-delay: 260ms;
+}
+.grf-support .support-benefit-summary li:nth-child(4) .support-benefit-box {
+  animation-delay: 390ms;
+}
+@keyframes support-benefit-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.grf-support .support-details-button {
+  margin-top: var(--section-cta-gap);
+}
+.grf-support.is-motion-ready:not(.is-details-button-visible)
+  .support-details-button {
+  visibility: hidden;
+}
+.grf-support.is-details-button-visible .support-details-button {
+  animation: support-detail-enter 600ms var(--support-ease) both;
+}
+.grf-support .support-scroll-cue {
+  --support-cue-opacity: 0.2;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  inset-inline-end: calc(100% - var(--support-photo-start) + 6px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  opacity: calc(var(--support-cue-opacity) * var(--support-copy-opacity, 1));
+  transform: translateY(-50%);
+  text-transform: uppercase;
+}
+.grf-support .support-scroll-cue span {
+  writing-mode: sideways-lr;
+  text-orientation: sideways;
+  white-space: nowrap;
+  font:
+    600 11px/1 pretendard,
+    serif;
+  letter-spacing: 0.05em;
+}
+.grf-support .support-scroll-cue svg {
+  width: 12px;
+  height: 20px;
+  transition: transform 450ms var(--support-ease);
+}
+.grf-support .support-scroll-cue path {
+  animation: support-chevron-flow 1.65s ease-in-out 420ms infinite both;
+}
+.grf-support .support-scroll-cue path:nth-child(2) {
+  animation-delay: 560ms;
+}
+.grf-support .support-scroll-cue path:nth-child(3) {
+  animation-delay: 700ms;
+}
+@keyframes support-chevron-flow {
+  0%,
+  60%,
+  100% {
+    opacity: 0.32;
+  }
+  26% {
+    opacity: 1;
+  }
+}
+.grf-support .support-scroll-cue:is(:hover, :focus-visible) svg {
+  transform: translateY(5px);
+}
+.grf-support .support-scroll-cue:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+@media (min-width: 768px) {
+  .grf-support.is-scroll-cue-visible .support-scroll-cue {
+    display: flex;
+    animation: support-scroll-cue-enter 560ms var(--support-ease) backwards;
+  }
+}
+@keyframes support-scroll-cue-enter {
+  from {
+    opacity: 0;
+    transform: translate(20px, -50%);
+  }
+  to {
+    opacity: calc(var(--support-cue-opacity) * var(--support-copy-opacity, 1));
+    transform: translateY(-50%);
+  }
+}
+@keyframes support-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.grf-support:not(.is-focused) .support-details {
+  visibility: hidden;
+}
+.grf-support .support-introduction {
+  display: block;
+  max-width: 58%;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.grf-support .support-lead {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+  font-size: 16px;
+  color: #9b917b;
+}
+.grf-support .support-summary {
+  margin-top: 0;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: -0.015em;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.grf-support .support-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(16px, 2vw, 32px);
+  padding: 0;
+  margin: 72px 0 0;
+  list-style: none;
+}
+.grf-support .support-card {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 400px;
+  min-width: 0;
+  border: none;
+  border-radius: 3px;
+  background: var(--paper);
+  transform: none;
+  overflow: hidden;
+}
+.grf-support .support-card-image {
+  position: relative;
+  min-height: 0;
+  border: none;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  background: #ede6da;
+}
+.grf-support .support-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.grf-support .support-card:is(:hover, :focus-within) .support-card-image img {
+  transform: scale(1.05);
+}
+.grf-support .support-card-content {
+  padding: 20px clamp(18px, 1.65vw, 30px) 24px;
+  min-height: 0;
+  border: 1px solid #dcd3c7;
+  border-radius: 0 0 3px 3px;
+  background: var(--paper);
+  transition: border-color 350ms ease;
+}
+.grf-support .support-card:is(:hover, :focus-within) .support-card-content {
+  border-color: #c9bbae;
+}
+.grf-support .support-card-english {
+  font:
+    400 13px/1.4 Forum,
+    serif;
+  letter-spacing: 0.04em;
+  color: #7c674f;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.grf-support .support-card h3 {
+  margin: 6px 0 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+  word-break: keep-all;
+}
+.grf-support .support-card-description {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: -0.015em;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grf-support {
+    --support-header-height: 96px;
+  }
+  .grf-support .support-benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 58px 32px;
+    max-width: 820px;
+    margin-inline: auto;
+  }
+  .grf-support .support-card {
+    height: 400px;
+  }
+}
+@media (max-width: 767px) {
+  .grf-support {
+    --support-header-height: 92px;
+  }
+  .grf-support[data-support-layout="cards"] {
+    --support-gutter: 24px;
+  }
+  .grf-support[data-support-layout="cards"] .support-copy {
+    padding-top: 112px;
+    padding-bottom: 70px;
+  }
+  .grf-support[data-support-layout="cards"] h2 {
+    max-width: none;
+    margin-top: 24px;
+  }
+  .grf-support .support-header-row {
+    gap: 12px;
+  }
+  .grf-support .support-kicker {
+    font-size: 16px;
+    gap: 8px;
+  }
+  .grf-support .support-cta {
+    padding: 6px 14px;
+    font-size: 13px;
+    min-height: 36px;
+    gap: 10px;
+    white-space: nowrap;
+  }
+  .grf-support .support-cta-label {
+    height: 20px;
+  }
+  .grf-support .support-cta-ko,
+  .grf-support .support-cta-en {
+    line-height: 20px;
+  }
+  .grf-support .support-introduction {
+    max-width: none;
+  }
+  .grf-support .support-benefit-summary {
+    max-width: none;
+  }
+  .grf-support .support-benefits {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 44px;
+    padding-inline: 8px;
+  }
+  .grf-support .support-card {
+    width: 100%;
+    max-width: 360px;
+    height: 400px;
+    margin-inline: auto;
+  }
+  .grf-support .support-card-content {
+    padding: 22px 24px;
+  }
+  .grf-support .support-card-english {
+    font-size: 17px;
+  }
+  .grf-support[data-support-layout="cards"] .support-visual {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .grf-scroll-test .grf-hero {
+    height: 100svh;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+  .grf-scroll-test .grf-hero .scene {
+    height: 100%;
+    min-height: 0;
+  }
+}
+/* Aligned desktop spread: equal gutters and all content inside one viewport. */
+@media (min-width: 768px) {
+  .grf-support[data-support-layout="cards"] {
+    height: 100svh;
+    min-height: 0;
+    --support-card-height: clamp(340px, calc(100svh - 400px), 400px);
+  }
+  .grf-support[data-support-layout="cards"] .support-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-height: 0;
+    padding-block: calc(var(--support-header-height) + 16px) calc(16px + 10svh);
+  }
+  .grf-support[data-support-layout="cards"] .support-copy {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 0 var(--support-gutter);
+  }
+  .grf-support[data-support-layout="cards"] h2 {
+    margin-top: 34px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .grf-support .support-details {
+    display: block;
+    min-height: 0;
+  }
+  .grf-support .support-lead {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .grf-support .support-summary {
+    margin-top: 0px;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .grf-support .support-benefits {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: clamp(16px, 1.5vw, 28px);
+    margin: 62px 0 0;
+    max-width: none;
+  }
+  .grf-support .support-card {
+    height: var(--support-card-height);
+    align-self: start;
+    transform: none;
+  }
+  .grf-support .support-card-content {
+    padding: 36px 40px;
+  }
+  .grf-support .support-card-english {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .grf-support .support-card h3 {
+    margin-top: 6px;
+    font-size: clamp(18px, 1.4vw, 21px);
+    line-height: 1.35;
+  }
+  .grf-support .support-card-description {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grf-support .support-introduction {
+    font-size: 13px;
+  }
+  .grf-support .support-benefits {
+    grid-template-columns: repeat(4, minmax(230px, 1fr));
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 6px;
+  }
+}
+@media (max-width: 767px) {
+  .grf-support .support-introduction {
+    font-size: 13px;
+  }
+  .grf-support .support-benefits {
+    padding-inline: 0;
+  }
+  .grf-support .support-card {
+    max-width: none;
+    transform: none;
+  }
+  .grf-support[data-support-layout="cards"] {
+    height: 100svh;
+    min-height: 0;
+  }
+  .grf-support[data-support-layout="cards"] .support-container {
+    height: 100%;
+    min-height: 0;
+  }
+  .grf-support[data-support-layout="cards"] .support-copy {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 24px;
+  }
+  .grf-support .support-benefits {
+    grid-template-columns: repeat(4, 250px);
+    gap: 16px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 8px;
+  }
+  .grf-support .support-card {
+    width: auto;
+    height: 400px;
+  }
+}
+/* Motion states only. Keep the user's card layout and type values intact. */
+.grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 {
+  transform: scale(1.12);
+}
+.grf-support[data-motion-preview="live"].is-motion-ready .support-details {
+  visibility: visible;
+}
+.grf-support[data-motion-preview="live"].is-motion-ready .support-introduction {
+  opacity: 0;
+  transform: translateY(var(--section-copy-rise-offset));
+  transition:
+    opacity var(--section-copy-fade-duration) ease,
+    transform var(--section-copy-rise-duration) var(--section-copy-rise-ease);
+}
+.grf-support[data-motion-preview="live"].is-details-visible
+  .support-introduction {
+  opacity: 1;
+  transform: translateY(0);
+}
+.grf-support[data-motion-preview="live"].is-motion-ready .support-card {
+  clip-path: inset(0% 0% 100% 0%);
+  transform: translateY(-36px);
+  transition:
+    clip-path 1400ms var(--support-ease),
+    transform 1400ms var(--support-ease);
+}
+.grf-support[data-motion-preview="live"].is-cards-visible .support-card {
+  clip-path: inset(0% 0% 0% 0%);
+  transform: translateY(0);
+}
+.grf-support[data-motion-preview="live"].is-cards-visible
+  .support-card:nth-child(2) {
+  transition-delay: 300ms;
+}
+.grf-support[data-motion-preview="live"].is-cards-visible
+  .support-card:nth-child(3) {
+  transition-delay: 600ms;
+}
+.grf-support[data-motion-preview="live"].is-cards-visible
+  .support-card:nth-child(4) {
+  transition-delay: 900ms;
+}
+.grf-support.is-final-frame :is(.support-benefit-box, .support-details-button, .support-scroll-cue) {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .grf-support.is-scroll-cue-visible .support-scroll-cue,
+  .grf-support .support-scroll-cue path {
+    animation: none;
+  }
+  .grf-support .support-scroll-cue svg {
+    transition: none;
+  }
+  .grf-support .support-scroll-cue:is(:hover, :focus-visible) svg {
+    transform: none;
+  }
+  .grf-support.is-benefit-summary-visible .support-benefit-box,
+  .grf-support.is-details-button-visible .support-details-button {
+    animation: none;
+  }
+  .grf-scroll-test {
+    scroll-behavior: auto;
+  }
+  .grf-support.is-motion-ready .support-title-line > span,
+  .grf-support.is-motion-ready .support-kicker,
+  .grf-support.is-motion-ready .support-header-line,
+  .grf-support.is-motion-ready .support-cta {
+    transform: none;
+    transition: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .grf-support .support-visual,
+  .grf-support .support-photo,
+  .grf-support .support-copy,
+  .grf-support h2 {
+    transition: none;
+  }
+  .grf-support[data-motion-preview="live"].is-motion-ready
+    .support-introduction,
+  .grf-support[data-motion-preview="live"].is-motion-ready .support-card {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+  .grf-support[data-motion-preview="live"].is-motion-ready:not(.is-focused) h2 {
+    transform: none;
+  }
+}
