@@ -1,20 +1,21 @@
 .grf-page .section-placeholder {
   --ocean-photo-delay: 850ms;
-  --ocean-photo-fade: 1200ms;
+  --ocean-photo-fade: calc(1200ms * var(--section-entry-scale));
   --ocean-title-delay: calc(var(--ocean-photo-delay) + var(--ocean-photo-fade));
-  --ocean-letter-duration: 720ms;
+  --ocean-letter-duration: calc(720ms * var(--section-entry-scale));
   --ocean-letter-step: 95ms;
   --ocean-title-exit: calc(
     var(--ocean-title-delay) + var(--ocean-letter-duration) + 6 *
       var(--ocean-letter-step) + var(--section-intro-word-hold)
   );
-  --ocean-title-fade: 550ms;
+  --ocean-title-fade: calc(550ms * var(--section-entry-scale));
   --ocean-photo-dock-delay: calc(
     var(--ocean-title-exit) + var(--ocean-title-fade)
   );
   --ocean-photo-dock-duration: 1350ms;
+  --ocean-photo-dock-entry: calc(var(--ocean-photo-dock-duration) * var(--section-entry-scale));
   --ocean-caption-delay: calc(
-    var(--ocean-photo-dock-delay) + var(--ocean-photo-dock-duration)
+    var(--ocean-photo-dock-delay) + var(--ocean-photo-dock-entry)
   );
   --ocean-photo-top-gap: clamp(14px, 2.2svh, 32px);
   --ocean-photo-dock-width: clamp(120px, 27%, 690px);
@@ -55,6 +56,8 @@
   width: var(--ocean-photo-dock-width);
   height: calc(100% - var(--header-height) - var(--ocean-photo-top-gap));
   transform: translateX(0);
+  transition-duration: var(--ocean-photo-dock-entry);
+  transition-timing-function: var(--section-entry-ease);
   transition-delay: var(--ocean-photo-dock-delay);
 }
 .grf-page .section-placeholder img {
@@ -100,7 +103,7 @@
   > span
   > span {
   animation: ocean-letter-rise var(--ocean-letter-duration)
-    cubic-bezier(0.22, 1, 0.36, 1)
+    var(--section-entry-ease)
     calc(
       var(--ocean-title-delay) + var(--letter-index) * var(--ocean-letter-step)
     )
@@ -243,7 +246,7 @@
   display: none;
 }
 .grf-page .section-spread.is-third-photo-visible .section-ocean-line > span {
-  animation: ocean-letter-rise 1200ms cubic-bezier(0.22, 1, 0.36, 1)
+  animation: ocean-letter-rise calc(1200ms * var(--section-entry-scale)) var(--section-entry-ease)
     calc(var(--ocean-caption-delay) + 120ms) both;
 }
 .grf-page
@@ -255,7 +258,7 @@
 .grf-page
   .section-spread.is-third-photo-visible
   .section-ocean-kicker {
-  animation: ocean-caption-rise 700ms cubic-bezier(0.22, 1, 0.36, 1)
+  animation: ocean-caption-rise calc(700ms * var(--section-entry-scale)) var(--section-entry-ease)
     var(--ocean-caption-delay) both;
 }
 .grf-page :is(.section-ocean-subtitle, .section-ocean-summary) {

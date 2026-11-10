@@ -33,14 +33,18 @@
   font-family: Pretendard, "Malgun Gothic", sans-serif;
   font-synthesis: none;
 }
+.grf-page :is(.section-placeholder, .grf-people, .section-fifth, .section-sixth) {
+  --section-entry-scale: 1.25;
+  --section-entry-ease: cubic-bezier(0.25, 0.7, 0.35, 1);
+}
 @media (prefers-reduced-motion: no-preference) {
   .grf-page .section-spread.is-third-photo-visible :is(.section-ocean-subtitle, .section-ocean-summary, .section-ocean-body),
   .grf-people.is-visible .people-description,
   .grf-page .section-fifth.is-visible .section-fifth-description,
   .grf-page .section-sixth.is-intro-playing .section-sixth-description {
     animation:
-      section-copy-fade var(--section-copy-fade-duration) ease var(--section-copy-delay, 0ms) backwards,
-      section-copy-rise var(--section-copy-rise-duration) var(--section-copy-rise-ease) var(--section-copy-delay, 0ms) backwards;
+      section-copy-fade calc(var(--section-copy-fade-duration) * var(--section-entry-scale)) ease var(--section-copy-delay, 0ms) backwards,
+      section-copy-rise calc(var(--section-copy-rise-duration) * var(--section-entry-scale)) var(--section-entry-ease) var(--section-copy-delay, 0ms) backwards;
   }
 }
 @keyframes section-copy-fade {
@@ -139,12 +143,12 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .grf-page .section-sixth {
-    --sixth-dock-delay: 1450ms;
-    --sixth-dock-duration: 1150ms;
+    --sixth-letter-duration: calc(720ms * var(--section-entry-scale));
+    --sixth-dock-delay: calc(730ms + var(--sixth-letter-duration));
+    --sixth-dock-duration: calc(1150ms * var(--section-entry-scale));
     --sixth-reveal-start: calc(
       var(--sixth-dock-delay) + var(--sixth-dock-duration)
     );
-    --sixth-ease: cubic-bezier(0.25, 0.7, 0.35, 1);
   }
   .grf-page
     .section-sixth:not(.is-visible)
@@ -174,20 +178,20 @@
   }
   .grf-page .section-sixth.is-intro-playing .section-sixth-eyebrow {
     animation: section-sixth-eyebrow-dock var(--sixth-dock-duration)
-      var(--sixth-ease) var(--sixth-dock-delay) backwards;
+      var(--section-entry-ease) var(--sixth-dock-delay) backwards;
   }
   .grf-page .section-sixth.is-intro-playing .section-sixth-letter > span {
-    animation: section-sixth-title-rise 720ms var(--sixth-ease)
+    animation: section-sixth-title-rise var(--sixth-letter-duration) var(--section-entry-ease)
       var(--letter-delay) backwards;
   }
   .grf-page .section-sixth.is-intro-playing .section-sixth-title h2 {
-    animation: section-sixth-title-rise 1000ms var(--sixth-ease)
+    animation: section-sixth-title-rise calc(1000ms * var(--section-entry-scale)) var(--section-entry-ease)
       var(--sixth-reveal-start) backwards;
   }
   .grf-page
     .section-sixth.is-intro-playing
     .section-sixth-actions {
-    animation: section-sixth-rise 850ms var(--sixth-ease)
+    animation: section-sixth-rise calc(850ms * var(--section-entry-scale)) var(--section-entry-ease)
       calc(var(--sixth-reveal-start) + var(--sixth-delay)) backwards;
   }
   .grf-page .section-sixth-description {
@@ -197,7 +201,7 @@
     --sixth-delay: 340ms;
   }
   .grf-page .section-sixth.is-intro-playing .section-sixth-image {
-    animation: section-sixth-title-rise 1300ms var(--sixth-ease)
+    animation: section-sixth-title-rise calc(1300ms * var(--section-entry-scale)) var(--section-entry-ease)
       calc(var(--sixth-reveal-start) + 100ms) backwards;
   }
 }
@@ -508,7 +512,7 @@
   .grf-page .section-fifth.is-visible .section-fifth-copy h2,
   .grf-page .section-fifth.is-visible .section-fifth-activities li,
   .grf-page .section-fifth.is-visible .section-fifth-cta {
-    animation: section-fifth-reveal 650ms cubic-bezier(0.22, 1, 0.36, 1)
+    animation: section-fifth-reveal calc(650ms * var(--section-entry-scale)) var(--section-entry-ease)
       backwards;
     animation-delay: calc(
       var(--fifth-reveal-delay, 480ms) + var(--fifth-copy-start)
@@ -778,9 +782,14 @@
   max-width: fit-content;
   /*border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);*/
   background: color-mix(in srgb, var(--ink) 6%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
 }
-.grf-page .section-indicator[hidden] {
-  display: none;
+.grf-page .section-indicator.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
 }
 .grf-page .section-indicator button {
   display: grid;
@@ -805,7 +814,7 @@
 .grf-page .section-indicator button:is(:hover, [aria-current])::before {
   width: 8px;
   height: 8px;
-  border: 0;
+  border-color: transparent;
   background: color-mix(in srgb, var(--ink) 18%, transparent);
 }
 .grf-page .section-indicator button:focus-visible {
@@ -832,7 +841,24 @@
 .grf-page
   .section-indicator.is-over-footer
   button:is(:hover, [aria-current])::before {
+  border-color: transparent;
   background: currentColor;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .grf-page .section-indicator {
+    transition:
+      opacity 400ms ease,
+      transform 460ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 300ms ease,
+      background-color 300ms ease,
+      visibility 0s 460ms;
+  }
+  .grf-page .section-indicator.is-visible {
+    transition-delay: 0s;
+  }
+  .grf-page .section-indicator button::before {
+    transition: width 300ms ease, height 300ms ease, background-color 300ms ease, border-color 300ms ease;
+  }
 }
 @media (min-width: 768px) {
   .grf-page:has(.grf-support.is-motion-ready:not(.is-focused))

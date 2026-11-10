@@ -284,6 +284,9 @@ html:has(.grf-people .people-detail[open]) {
   margin: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
+  .grf-people {
+    --people-detail-expand-duration: calc(1050ms * var(--section-entry-scale));
+  }
   .grf-people.is-motion-ready:not(.is-visible)
     :is(
       .people-intro .people-kicker,
@@ -299,7 +302,7 @@ html:has(.grf-people .people-detail[open]) {
       .people-intro .people-kicker,
       .people-details-cta
     ) {
-    animation: people-copy-rise 700ms cubic-bezier(0.22, 1, 0.36, 1)
+    animation: people-copy-rise calc(700ms * var(--section-entry-scale)) var(--section-entry-ease)
       var(--people-copy-delay, 0ms) backwards;
   }
   .grf-people.is-visible .people-description {
@@ -309,14 +312,14 @@ html:has(.grf-people .people-detail[open]) {
     --people-copy-delay: 780ms;
   }
   .grf-people.is-visible .people-title-line > span {
-    animation: people-title-rise 1000ms cubic-bezier(0.22, 1, 0.36, 1)
+    animation: people-title-rise calc(1000ms * var(--section-entry-scale)) var(--section-entry-ease)
       var(--people-line-delay, 120ms) backwards;
   }
   .grf-people.is-visible .people-title-line:nth-child(2) {
     --people-line-delay: 280ms;
   }
   .grf-people.is-visible .people-profile {
-    animation: people-profile-reveal 760ms cubic-bezier(0.22, 1, 0.36, 1)
+    animation: people-profile-reveal calc(760ms * var(--section-entry-scale)) var(--section-entry-ease)
       var(--people-profile-delay, 800ms) backwards;
   }
   .grf-people.is-visible .people-profile:nth-child(2) {
@@ -326,7 +329,7 @@ html:has(.grf-people .people-detail[open]) {
     --people-profile-delay: 1080ms;
   }
   .grf-people .people-detail[open] .people-detail-image {
-    animation: people-image-expand 1050ms cubic-bezier(0.45, 0, 0.2, 1) both;
+    animation: people-image-expand var(--people-detail-expand-duration) cubic-bezier(0.45, 0, 0.2, 1) both;
   }
   .grf-people
     .people-detail[open]
@@ -334,7 +337,7 @@ html:has(.grf-people .people-detail[open]) {
   .grf-people
     .people-detail[open]:not(.has-profile-switch)
     .people-detail-copy {
-    animation: people-copy-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) 1050ms
+    animation: people-copy-rise calc(700ms * var(--section-entry-scale)) var(--section-entry-ease) var(--people-detail-expand-duration)
       backwards;
   }
 }

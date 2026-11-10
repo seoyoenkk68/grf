@@ -12,6 +12,8 @@
   const sectionIndicator = document.querySelector('.section-indicator');
   const indicatorDots = [...sectionIndicator.querySelectorAll('[data-section-label]')];
   const indicatorLabel = sectionIndicator.querySelector('.section-indicator-label');
+  const indicatorItems = [...indicatorDots, indicatorLabel];
+  let indicatorAnimations = [];
   const desktop = matchMedia('(min-width: 768px)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const careersEyebrow = sixth.querySelector('.section-sixth-eyebrow');
@@ -122,7 +124,9 @@
     lastScrollY = scrollY;
     const beyondHero = spread.getBoundingClientRect().top <= header.offsetHeight;
     header.classList.toggle('has-section-divider', beyondHero);
-    sectionIndicator.hidden = !beyondHero;
+    const indicatorWasVisible = sectionIndicator.classList.contains('is-visible');
+    sectionIndicator.classList.toggle('is-visible', beyondHero);
+    sectionIndicator.inert = !beyondHero;
     sectionIndicator.classList.toggle('is-over-footer', beyondHero
       && footer.getBoundingClientRect().top <= sectionIndicator.getBoundingClientRect().top);
     const current = hasReached(sixth) ? sixth : hasReached(fifth) ? fifth
@@ -133,6 +137,12 @@
     syncIntroScrollLock(current);
     if (current === indicatedSection) return;
     indicatedSection = current;
+    updateIndicator(current, beyondHero && indicatorWasVisible && !reduced.matches);
+  }
+
+  function updateIndicator(current, animate) {
+    const previousPositions = animate ? indicatorItems.map(item => item.getBoundingClientRect().left) : [];
+    indicatorAnimations.forEach(animation => animation.cancel());
     indicatorDots.forEach(dot => {
       if (dot.dataset.scrollTarget === current.id) {
         dot.setAttribute('aria-current', 'location');
@@ -141,6 +151,16 @@
       } else {
         dot.removeAttribute('aria-current');
       }
+    });
+    indicatorAnimations = previousPositions.flatMap((left, index) => {
+      const item = indicatorItems[index];
+      const offset = left - item.getBoundingClientRect().left;
+      const isLabel = item === indicatorLabel;
+      if (!offset && !isLabel) return [];
+      return [item.animate([
+        { transform: `translate(${offset}px, ${isLabel ? 3 : 0}px)`, opacity: isLabel ? 0 : 1 },
+        { transform: 'none', opacity: 1 },
+      ], { duration: 360, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' })];
     });
   }
 

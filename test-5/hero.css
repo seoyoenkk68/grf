@@ -58,13 +58,18 @@
   overflow: hidden;
   transform: translateY(0);
 }
-.grf-hero .header-fixed.has-section-divider::after {
+.grf-hero .header-fixed::after {
   content: "";
   position: absolute;
   inset: auto var(--page-frame-inset) 0;
   height: 1px;
   background: color-mix(in srgb, var(--ink) 18%, transparent);
+  opacity: 0;
+  transition: opacity 480ms ease;
   pointer-events: none;
+}
+.grf-hero .header-fixed.has-section-divider::after {
+  opacity: 1;
 }
 .grf-hero .header {
   position: relative;
@@ -796,13 +801,15 @@
 .grf-hero.hero-slide-layout .caption-reveal {
   display: none;
 }
+.grf-hero.hero-slide-layout .header-fixed {
+  color: var(--ink);
+  transition: background-color 480ms ease, color 480ms ease;
+}
 .grf-hero.hero-slide-layout .header-fixed:not(.has-section-divider) {
   background: transparent;
   color: white;
 }
-.grf-hero.hero-slide-layout
-  .header-fixed:not(.has-section-divider)
-  :is(.nav-item, .join) {
+.grf-hero.hero-slide-layout .header-fixed :is(.nav-item, .join) {
   color: inherit;
 }
 .grf-hero.hero-slide-layout .header-fixed:not(.has-section-divider) .join {
@@ -930,7 +937,8 @@
 /* 9. Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .grf-hero,
-  .grf-hero * {
+  .grf-hero *,
+  .grf-hero .header-fixed::after {
     scroll-behavior: auto !important;
     transition: none !important;
   }
