@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>온라인 입사지원 | 골든리본패밀리</title>
+    <link
+      rel="preload"
+      href="../assets/fonts/FORUM-REGULAR.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
+    />
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="sub.css" />
+    <link rel="stylesheet" href="vendor/lenis/lenis.css" />
+    <script src="common.js" defer></script>
+    <script src="vendor/lenis/lenis.min.js" defer></script>
+    <script src="sub.js" defer></script>
+  </head>
+  <body class="grf-page grf-sub" id="top">
+    <div class="header-fixed has-section-divider">
+      <header class="header">
+        <a
+          class="brand"
+          href="./"
+          aria-label="Golden Ribbon Family · 메인 처음으로"
+        >
+          Golden Ribbon<span>Family</span>
+        </a>
+        <div class="header-actions">
+          <a class="join" href="application.html" aria-current="page" aria-label="온라인 입사지원">
+            <span class="nav-label" aria-hidden="true"
+              ><span class="nav-label-ko">입사 지원</span
+              ><span class="nav-label-en" lang="en">Apply Now</span></span
+            >
+            <span class="join-arrow" aria-hidden="true">↗</span>
+          </a>
+          <button class="header-menu-toggle" type="button" aria-label="메뉴 열기" aria-controls="header-navigation" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <nav id="header-navigation" class="ribbon-nav" aria-label="주 메뉴" data-lenis-prevent>
+          <a class="nav-item" href="about.html" aria-label="골든리본 소개">
+            <span class="nav-label" aria-hidden="true"
+              ><span class="nav-label-ko">골든리본 소개</span
+              ><span class="nav-label-en" lang="en">About Us</span></span
+            >
+          </a>
+          <div class="support-nav">
+            <a class="nav-item" href="support.html" aria-label="설계사 지원"><span class="nav-label" aria-hidden="true"
+                ><span class="nav-label-ko">설계사 지원</span
+                ><span class="nav-label-en" lang="en"
+                  >Your Growth</span
+                ></span
+              ></a>
+            <details class="support-nav-disclosure">
+              <summary aria-label="설계사 지원 하위 메뉴"></summary>
+              <div class="support-nav-links">
+                <a href="support.html">지원 혜택</a>
+                <a href="ocean.html" lang="en">F-OCEAN</a>
+              </div>
+            </details>
+          </div>
+          <a class="nav-item" href="sharing.html" aria-label="나눔과 상생">
+            <span class="nav-label" aria-hidden="true"
+              ><span class="nav-label-ko">나눔과 상생</span
+              ><span class="nav-label-en" lang="en">Together</span></span
+            >
+          </a>
+          <a class="nav-item" href="careers.html" aria-label="입사 안내">
+            <span class="nav-label" aria-hidden="true"
+              ><span class="nav-label-ko">입사 안내</span
+              ><span class="nav-label-en" lang="en">Careers</span></span
+            >
+          </a>
+        </nav>
+      </header>
+    </div>
+    <main>
+      <div class="sub-container sub-page-title" data-sub-reveal>
+        <p class="sub-page-display" lang="en">APPLICATION</p>
+        <nav class="sub-breadcrumb" aria-label="현재 위치">
+          <a class="sub-breadcrumb-home" href="./" aria-label="홈"></a>
+          <span class="sub-breadcrumb-separator" aria-hidden="true"></span>
+          <a class="sub-breadcrumb-parent" href="careers.html">입사 안내</a>
+          <span class="sub-breadcrumb-separator" aria-hidden="true"></span>
+          <h1 aria-current="page">온라인 입사지원</h1>
+        </nav>
+      </div>
+      <div class="sub-container sub-editorial">
+        <section class="application-section" aria-labelledby="application-title">
+          <div class="application-intro" data-sub-reveal>
+            <h2 id="application-title">골든리본패밀리와의 새로운 시작,<br />지금 지원해 보세요.</h2>
+            <p id="application-preview">현재는 폼 미리보기 단계입니다. 실제 개인정보를 입력하지 마세요. 입력한 정보는 전송하거나 저장하지 않습니다.</p>
+          </div>
+          <form class="application-form" method="post" aria-describedby="application-preview">
+            <div class="application-fields">
+              <label>성함 <span aria-hidden="true">*</span>
+                <input name="name" type="text" autocomplete="name" placeholder="성함을 입력해 주세요." required />
+              </label>
+              <label>연락처 <span aria-hidden="true">*</span>
+                <input name="phone" type="tel" autocomplete="tel" placeholder="연락 가능한 휴대전화 번호" required />
+              </label>
+              <label>이메일 주소 <span aria-hidden="true">*</span>
+                <input name="email" type="email" autocomplete="email" placeholder="이메일 주소를 입력해 주세요." required />
+              </label>
+              <label>금융 영업 경력 <span aria-hidden="true">*</span>
+                <select name="experience" required>
+                  <option value="" selected disabled>경력 여부를 선택해 주세요.</option>
+                  <option value="new">신입</option>
+                  <option value="experienced">경력</option>
+                </select>
+              </label>
+              <label class="application-motivation">자기소개 및 포부 <span aria-hidden="true">*</span>
+                <textarea name="motivation" rows="6" placeholder="지원 동기와 본인의 경험 또는 앞으로의 목표를 작성해 주세요." required></textarea>
+              </label>
+            </div>
+
+            <fieldset class="application-consent">
+              <legend>개인정보 수집 및 이용 동의 (필수)</legend>
+              <div class="application-consent-terms">
+                <p id="application-consent-note">골든리본패밀리는 온라인 입사지원 접수 및 채용 절차 진행을 위해 다음과 같이 개인정보를 수집·이용합니다.</p>
+                <dl>
+                  <div>
+                    <dt>1. 수집 및 이용 목적</dt>
+                    <dd>입사지원 접수, 지원자 확인, 채용 심사, 면접 일정 및 결과 안내, 채용 관련 연락</dd>
+                  </div>
+                  <div>
+                    <dt>2. 수집하는 개인정보 항목</dt>
+                    <dd>성명, 연락처, 이메일 주소, 금융 영업 경력, 자기소개 및 포부</dd>
+                  </div>
+                  <div>
+                    <dt>3. 개인정보 보유 및 이용 기간</dt>
+                    <dd>채용 절차 종료 시까지 보유·이용하며, 이후 지체 없이 파기합니다. 단, 관계 법령에 따른 보존 의무가 있는 경우 해당 기간 동안 보관합니다.</dd>
+                  </div>
+                  <div>
+                    <dt>4. 동의 거부 권리 및 불이익</dt>
+                    <dd>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부하는 경우 온라인 입사지원서 접수가 제한됩니다.</dd>
+                  </div>
+                </dl>
+              </div>
+              <label>
+                <input type="checkbox" name="consent" aria-describedby="application-consent-note" required />
+                개인정보 수집 및 이용에 동의합니다. (필수)
+              </label>
+              <a class="application-privacy-link" href="privacy.html" target="_blank" rel="noopener" aria-label="개인정보처리방침 전문 보기 (새 탭)">개인정보처리방침 전문 보기</a>
+            </fieldset>
+
+            <div class="application-actions">
+              <button class="join application-submit" type="submit" disabled>입사지원서 접수하기 <span class="join-arrow" aria-hidden="true">↗</span></button>
+              <a class="join" href="careers.html">입사 안내로 돌아가기</a>
+            </div>
+            <p class="application-status" role="status" hidden></p>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="site-footer-main">
+          <nav class="site-footer-nav" aria-label="푸터 메뉴">
+            <a href="support.html">설계사 지원 <span aria-hidden="true">↗</span></a>
+            <a href="sharing.html">나눔과 상생 <span aria-hidden="true">↗</span></a>
+            <a href="careers.html">입사 안내 <span aria-hidden="true">↗</span></a>
+            <a class="site-footer-cta" href="partnership.html">제휴 문의</a>
+            <a class="site-footer-cta" href="consultation.html">자산관리 상담</a>
+          </nav>
+          <a class="site-footer-top" href="#top" aria-label="맨 위로">
+            <span aria-hidden="true">↑</span>
+          </a>
+        </div>
+        <div class="site-footer-details" aria-label="회사 및 문의 정보">
+          <div>
+            <h2>회사 정보 <span class="site-footer-sample">예시 정보</span></h2>
+            <dl>
+              <div><dt>상호</dt><dd>골든리본패밀리</dd></div>
+              <div><dt>대표자</dt><dd>홍길동</dd></div>
+              <div><dt>사업자등록번호</dt><dd>000-00-00000</dd></div>
+              <div><dt>보험대리점 등록번호</dt><dd>제0000000000호</dd></div>
+              <div><dt>주소</dt><dd>서울특별시 중구 예시로 00, 0층</dd></div>
+            </dl>
+          </div>
+          <div>
+            <h2>문의</h2>
+            <dl>
+              <div><dt>대표전화</dt><dd>02-000-0000</dd></div>
+              <div><dt>팩스</dt><dd>02-000-0000</dd></div>
+              <div><dt>이메일</dt><dd>contact@example.com</dd></div>
+              <div><dt>운영시간</dt><dd>평일 09:00–18:00</dd></div>
+              <div><dt>개인정보 보호책임자</dt><dd>홍길동</dd></div>
+            </dl>
+          </div>
+        </div>
+        <ul class="site-footer-policies" aria-label="사이트 정책" role="list">
+          <li><a href="privacy.html">개인정보처리방침</a></li>
+          <li>이메일무단수집거부</li>
+        </ul>
+        <div class="site-footer-bottom">
+          <small lang="en">Copyright © 2026 Golden Ribbon Family. All rights reserved.</small>
+          <p class="site-footer-brand" lang="en">Golden Ribbon <span>Family</span></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

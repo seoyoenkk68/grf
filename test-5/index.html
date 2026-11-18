@@ -17,17 +17,10 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="hero.css" />
-    <link rel="stylesheet" href="support.css" />
-    <link rel="stylesheet" href="ocean.css" />
-    <link rel="stylesheet" href="people.css" />
-    <script src="script.js" defer></script>
-    <script src="carousel.js" defer></script>
-    <script src="scroll.js" defer></script>
-    <script src="support.js" defer></script>
-    <script src="people.js" defer></script>
-    <script src="golden-silk.js" defer></script>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="main.css" />
+    <script src="common.js" defer></script>
+    <script src="main.js" defer></script>
   </head>
   <body class="grf-page">
     <main>
@@ -47,45 +40,58 @@
               >
                 Golden Ribbon<span>Family</span>
               </a>
-              <nav class="ribbon-nav" aria-label="메뉴 디자인 표본">
-                <button
-                  type="button"
+              <div class="header-actions">
+                <a class="join" href="application.html" aria-label="온라인 입사지원">
+                  <span class="nav-label" aria-hidden="true"
+                    ><span class="nav-label-ko">입사 지원</span
+                    ><span class="nav-label-en" lang="en">Apply Now</span></span
+                  >
+                  <span class="join-arrow" aria-hidden="true">↗</span>
+                </a>
+                <button class="header-menu-toggle" type="button" aria-label="메뉴 열기" aria-controls="header-navigation" aria-expanded="false">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </button>
+              </div>
+              <nav id="header-navigation" class="ribbon-nav" aria-label="주 메뉴">
+                <a
                   class="nav-item"
                   aria-label="골든리본 소개"
+                  href="about.html"
                 >
                   <span class="nav-label" aria-hidden="true"
                     ><span class="nav-label-ko">골든리본 소개</span
                     ><span class="nav-label-en" lang="en">About Us</span></span
                   >
-                </button>
-                <button type="button" class="nav-item" aria-label="설계사 지원">
-                  <span class="nav-label" aria-hidden="true"
-                    ><span class="nav-label-ko">설계사 지원</span
-                    ><span class="nav-label-en" lang="en"
-                      >Your Growth</span
-                    ></span
-                  >
-                </button>
-                <button type="button" class="nav-item" aria-label="나눔과 상생">
+                </a>
+                <div class="support-nav">
+                  <a class="nav-item" href="support.html" aria-label="설계사 지원"><span class="nav-label" aria-hidden="true"
+                      ><span class="nav-label-ko">설계사 지원</span
+                      ><span class="nav-label-en" lang="en"
+                        >Your Growth</span
+                      ></span
+                    ></a>
+                  <details class="support-nav-disclosure">
+                    <summary aria-label="설계사 지원 하위 메뉴"></summary>
+                    <div class="support-nav-links">
+                      <a href="support.html">지원 혜택</a>
+                      <a href="ocean.html" lang="en">F-OCEAN</a>
+                    </div>
+                  </details>
+                </div>
+                <a class="nav-item" aria-label="나눔과 상생" href="sharing.html">
                   <span class="nav-label" aria-hidden="true"
                     ><span class="nav-label-ko">나눔과 상생</span
                     ><span class="nav-label-en" lang="en">Together</span></span
                   >
-                </button>
-                <button type="button" class="nav-item" aria-label="입사 안내">
+                </a>
+                <a class="nav-item" aria-label="입사 안내" href="careers.html">
                   <span class="nav-label" aria-hidden="true"
                     ><span class="nav-label-ko">입사 안내</span
                     ><span class="nav-label-en" lang="en">Careers</span></span
                   >
-                </button>
+                </a>
               </nav>
-              <button class="join" type="button" aria-label="입사 지원">
-                <span class="nav-label" aria-hidden="true"
-                  ><span class="nav-label-ko">입사 지원</span
-                  ><span class="nav-label-en" lang="en">Apply Now</span></span
-                >
-                <span class="join-arrow" aria-hidden="true">↗</span>
-              </button>
             </header>
           </div>
         </div>
@@ -222,11 +228,11 @@
         <div class="caption-reveal">
           <div class="editorial-note">
             <p class="philosophy">
-              한 사람의 성장이 빛날 때, 우리의 내일도 황금빛이 됩니다.
+              한 사람의 성장이 빛날 때,<br class="philosophy-mobile-break" /> 우리의 내일도 황금빛이 됩니다.
             </p>
             <p class="body-copy">
               골든리본패밀리는 설계사 한 사람 한 사람의 가능성과 전문성을 소중히
-              여깁니다.<br />각자의 성장이 더 큰 가치로 이어지도록, 사람을
+              여깁니다.<br /> 각자의 성장이 더 큰 가치로 이어지도록, 사람을
               중심에 두고 더 나은 미래를 만들어갑니다.
             </p>
             <button
@@ -397,9 +403,9 @@
                     </div>
                   </li>
                 </ul>
-                <button
+                <a
                   class="join support-details-button"
-                  type="button"
+                  href="support.html"
                   aria-label="설계사 지원 혜택 자세히 보기"
                 >
                   <span class="nav-label" aria-hidden="true">
@@ -407,7 +413,7 @@
                     <span class="nav-label-en" lang="en">Learn More</span>
                   </span>
                   <span class="join-arrow" aria-hidden="true">↗</span>
-                </button>
+                </a>
               </div>
             </div>
             <button
@@ -435,15 +441,6 @@
           aria-label="F-OCEAN"
           inert
         >
-          <div class="section-ocean-photo">
-            <img
-              src="../assets/image/main_sec3_full.jpg"
-              alt="해 질 무렵 바닷가에서 노트북 앞에 앉은 설계사와 골드 리본"
-              width="1920"
-              height="1080"
-              decoding="async"
-            />
-          </div>
           <h2 class="section-ocean-title" lang="en" aria-label="F-OCEAN">
             <span aria-hidden="true" style="--letter-index: 0"
               ><span>F</span></span
@@ -467,6 +464,15 @@
               ><span>N</span></span
             >
           </h2>
+          <div class="section-ocean-photo">
+            <img
+              src="../assets/image/main_sec3_full.jpg"
+              alt="해 질 무렵 바닷가에서 노트북 앞에 앉은 설계사와 골드 리본"
+              width="1920"
+              height="1080"
+              decoding="async"
+            />
+          </div>
           <div class="section-ocean-caption">
             <div class="section-ocean-lead">
               <!--
@@ -558,10 +564,9 @@
             골든리본패밀리가 추구하는 가치는 사람을 통해 구체화됩니다. 각자의
             전문성과 경험을 바탕으로 조직을 이끌어가는 주요 멤버를 소개합니다.
           </p>
-          <button
+          <a
             class="join people-details-cta"
-            type="button"
-            aria-disabled="true"
+            href="about.html"
             aria-label="골든리본 소개 보기"
           >
             <span class="nav-label" aria-hidden="true">
@@ -569,7 +574,7 @@
               <span class="nav-label-en" lang="en">View More</span>
             </span>
             <span class="join-arrow" aria-hidden="true">↗</span>
-          </button>
+          </a>
         </div>
         <ol class="people-profiles" aria-label="주축 멤버 프로필">
           <li class="people-profile">
@@ -627,6 +632,11 @@
             </div>
           </li>
         </ol>
+        <button class="people-scroll-cue" type="button" aria-controls="people-detail" aria-label="첫 번째 프로필 보기">
+          <span lang="en">Scroll Down</span>
+          <span aria-hidden="true">↓</span>
+        </button>
+        <div class="people-mobile-profiles"></div>
         <button
           class="people-next-section"
           type="button"
@@ -640,6 +650,16 @@
           aria-labelledby="people-detail-name-01"
           data-native-scroll
         >
+          <button
+            type="button"
+            class="people-detail-close"
+            aria-label="프로필 닫기"
+          >
+            <span class="people-detail-close-text">CLOSE</span>
+            <svg class="people-detail-close-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
           <div class="people-detail-image" aria-hidden="true">
             <span>01</span>
           </div>
@@ -786,10 +806,9 @@
                 <span>나무를 심고 지역의 숲을 가꿉니다.</span>
               </li>
             </ol>
-            <button
+            <a
               class="join section-fifth-cta"
-              type="button"
-              aria-disabled="true"
+              href="sharing.html"
               aria-label="나눔과 상생 이야기"
             >
               <span class="nav-label" aria-hidden="true">
@@ -797,7 +816,7 @@
                 <span class="nav-label-en" lang="en">View More</span>
               </span>
               <span class="join-arrow" aria-hidden="true">↗</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -808,32 +827,34 @@
       >
         <div class="section-sixth-copy">
           <p class="section-sixth-eyebrow" lang="en">
-            <span class="section-sixth-eyebrow-text">JOIN GOLDEN RIBBON FAMILY</span>
+            <span class="section-sixth-eyebrow-text">JOIN GOLDEN <br />RIBBON FAMILY</span>
           </p>
           <div class="section-sixth-title">
             <h2 id="careers-title">
               새로운 도전의 첫걸음부터,<br />경험을 펼칠 새로운 무대까지.
             </h2>
           </div>
-          <p class="section-sixth-description">
-            금융 전문가로 첫발을 내딛는 신입도, 더 나은 활동 환경을 찾는 경력 설계사도.<br />
-            골든리본패밀리의 교육과 멘토링, 영업 지원과 업무 인프라를 확인하고 새로운 가능성을 시작해 보세요.
-          </p>
-          <div class="section-sixth-actions">
-            <button class="join section-sixth-primary" type="button" aria-disabled="true" aria-label="온라인 입사지원">
-              <span class="nav-label" aria-hidden="true">
-                <span class="nav-label-ko">온라인 입사지원</span>
-                <span class="nav-label-en" lang="en">Apply Now</span>
-              </span>
-              <span class="join-arrow" aria-hidden="true">↗</span>
-            </button>
-            <button class="join" type="button" aria-disabled="true" aria-label="입사 안내 자세히 보기">
-              <span class="nav-label" aria-hidden="true">
-                <span class="nav-label-ko">입사 안내 자세히 보기</span>
-                <span class="nav-label-en" lang="en">View Careers</span>
-              </span>
-              <span class="join-arrow" aria-hidden="true">↗</span>
-            </button>
+          <div class="section-sixth-body">
+            <p class="section-sixth-description">
+              금융 전문가로 첫발을 내딛는 신입도, 더 나은 활동 환경을 찾는 경력 설계사도.<br />
+              골든리본패밀리의 교육과 멘토링, 영업 지원과 업무 인프라를 확인하고 새로운 가능성을 시작해 보세요.
+            </p>
+            <div class="section-sixth-actions">
+              <a class="join section-sixth-primary" href="application.html" aria-label="온라인 입사지원">
+                <span class="nav-label" aria-hidden="true">
+                  <span class="nav-label-ko">온라인 입사지원</span>
+                  <span class="nav-label-en" lang="en">Apply Now</span>
+                </span>
+                <span class="join-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="join" href="careers.html" aria-label="입사 안내 자세히 보기">
+                <span class="nav-label" aria-hidden="true">
+                  <span class="nav-label-ko">입사 안내 자세히 보기</span>
+                  <span class="nav-label-en" lang="en">View Careers</span>
+                </span>
+                <span class="join-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </div>
         <div class="section-sixth-visual">
@@ -854,23 +875,47 @@
             <p class="section-partners-kicker" lang="en">INSURANCE PARTNERS</p>
             <h2>제휴 생·손보사</h2>
             <ul class="section-partners-list section-partners-insurers" role="list">
-              <li>삼성</li>
-              <li>한화생명</li>
-              <li>교보생명</li>
-              <li>동양생명</li>
-              <li>메리츠화재</li>
-              <li>현대해상</li>
-              <li>DB손해보험</li>
-              <li>KB손해보험</li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/samsung-life-klia.png" alt="삼성생명" width="983" height="443" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/hanwha-life.jpg" alt="한화생명" width="450" height="200" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/kyobo-life.png" alt="교보생명" width="420" height="200" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/dongyang-life.png" alt="동양생명" width="420" height="200" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/meritz-fire.png" alt="메리츠화재" width="500" height="302" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/hyundai-marine.png" alt="현대해상화재보험" width="400" height="48" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/db-insurance.png" alt="DB손해보험" width="1600" height="893" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <span class="section-partners-logo-kb">
+                  <img src="../assets/image/partners/kb-insurance.png" alt="KB손해보험" width="1000" height="711" loading="lazy" decoding="async" />
+                </span>
+              </li>
             </ul>
           </div>
           <div class="section-partners-group">
             <p class="section-partners-kicker" lang="en">SOCIAL RESPONSIBILITY</p>
             <h2>공식 후원 복지단체</h2>
             <ul class="section-partners-list section-partners-charities" role="list">
-              <li>초록우산</li>
-              <li>세이브더칠드런</li>
-              <li>유니세프</li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/childfund-korea.jpg" alt="초록우산" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/save-the-children.png" alt="세이브더칠드런" loading="lazy" decoding="async" />
+              </li>
+              <li class="section-partners-logo">
+                <img src="../assets/image/partners/unicef.webp" alt="유니세프" loading="lazy" decoding="async" />
+              </li>
             </ul>
           </div>
         </div>
@@ -879,15 +924,16 @@
     <footer class="site-footer">
       <div class="site-footer-inner">
         <div class="site-footer-main">
-          <div>
-            <p class="site-footer-brand" lang="en">Golden Ribbon <span>Family</span></p>
-            <p class="site-footer-name">골든리본패밀리</p>
-          </div>
           <nav class="site-footer-nav" aria-label="푸터 메뉴">
-            <a href="#support" data-scroll-target="support">설계사 지원</a>
-            <a href="#section-05" data-scroll-target="section-05">나눔과 상생</a>
-            <a href="#section-06" data-scroll-target="section-06">입사 안내</a>
+            <a href="support.html">설계사 지원 <span aria-hidden="true">↗</span></a>
+            <a href="sharing.html">나눔과 상생 <span aria-hidden="true">↗</span></a>
+            <a href="careers.html">입사 안내 <span aria-hidden="true">↗</span></a>
+            <a class="site-footer-cta" href="partnership.html">제휴 문의</a>
+            <a class="site-footer-cta" href="consultation.html">자산관리 상담</a>
           </nav>
+          <a class="site-footer-top" href="#top" data-scroll-target="top" aria-label="맨 위로">
+            <span aria-hidden="true">↑</span>
+          </a>
         </div>
         <div class="site-footer-details" aria-label="회사 및 문의 정보">
           <div>
@@ -912,13 +958,12 @@
           </div>
         </div>
         <ul class="site-footer-policies" aria-label="사이트 정책" role="list">
-          <li>개인정보처리방침</li>
-          <li>이용약관</li>
+          <li><a href="privacy.html">개인정보처리방침</a></li>
           <li>이메일무단수집거부</li>
         </ul>
         <div class="site-footer-bottom">
           <small lang="en">Copyright © 2026 Golden Ribbon Family. All rights reserved.</small>
-          <a href="#top" data-scroll-target="top">맨 위로 <span aria-hidden="true">↑</span></a>
+          <p class="site-footer-brand" lang="en">Golden Ribbon <span>Family</span></p>
         </div>
       </div>
     </footer>
