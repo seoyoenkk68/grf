@@ -19,7 +19,7 @@
 }
 
 .grf-sub :is(.sub-page-title, .sub-editorial) {
-  --sub-spacing: clamp(68px, 11vw, 240px);
+  --sub-spacing: clamp(96px, 13vw, 280px);
   --sub-half-spacing: calc(var(--sub-spacing) / 2);
 }
 
@@ -839,8 +839,8 @@
 }
 
 .grf-sub .privacy-policy section {
-  margin-top: clamp(30px, 4vw, 52px);
-  padding-top: 24px;
+  margin-top: clamp(40px, 5vw, 68px);
+  padding-top: 32px;
   border-top: 1px solid var(--sub-rule);
 }
 
@@ -894,7 +894,7 @@
 }
 
 .grf-sub .careers-editorial {
-  --careers-section-gap: clamp(76px, 9.5vw, 160px);
+  --careers-section-gap: clamp(112px, 12vw, 192px);
   --careers-content-gap: clamp(24px, 3vw, 40px);
 }
 
@@ -1183,7 +1183,7 @@
 
 @media (max-width: 767px) {
   .grf-sub :is(.sub-page-title, .sub-editorial) {
-    --sub-spacing: 84px;
+    --sub-spacing: 112px;
   }
   .grf-sub .sub-editorial {
     overflow-wrap: anywhere;
