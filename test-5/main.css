@@ -644,10 +644,17 @@
 }
 @media (max-width: 767px) {
   .grf-page .section-fifth {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
     padding-block-start: var(--header-height);
   }
+  .grf-page :is(.section-fifth, .section-sixth) {
+    overflow-anchor: none;
+  }
   .grf-page .section-fifth-visual {
+    order: 1;
+    flex: none;
     position: relative;
     inset: auto;
     height: clamp(240px, 42svh, 380px);
