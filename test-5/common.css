@@ -585,8 +585,19 @@
 }
 
 @media (max-width: 767px) {
+  .grf-page .site-footer {
+    --footer-text-size: 13.5px;
+  }
   .grf-page .site-footer-inner {
-    padding-block: 52px max(88px, calc(72px + env(safe-area-inset-bottom)));
+    padding-block: 68px max(108px, calc(92px + env(safe-area-inset-bottom)));
+  }
+  .grf-page .site-footer a,
+  .grf-page .site-footer-details h2 {
+    font-size: 13.5px;
+  }
+  .grf-page .site-footer-nav .site-footer-cta,
+  .grf-page .site-footer-bottom small {
+    font-size: 13px;
   }
   .grf-page .site-footer-main {
     align-items: start;
