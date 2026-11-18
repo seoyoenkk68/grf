@@ -615,12 +615,13 @@
   .grf-page .site-footer-details dl {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
-    gap: 8px 12px;
+    gap: 12px 20px;
   }
   .grf-page .site-footer-details dl > div {
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: subgrid;
+    column-gap: 20px;
   }
   .grf-page .site-footer-details dd {
     overflow-wrap: anywhere;
