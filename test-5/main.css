@@ -656,9 +656,10 @@
     background: linear-gradient(
       180deg,
       transparent,
-      rgb(18 27 21 / 16%) 8%,
-      rgb(18 27 21 / 73%) clamp(116px, 20svh, 180px),
-      rgb(18 27 21 / 87%) 64%
+      rgb(18 27 21 / 12%) 24%,
+      rgb(18 27 21 / 55%) 44%,
+      rgb(18 27 21 / 82%) 70%,
+      rgb(18 27 21 / 87%) 100%
     );
   }
   .grf-page .section-fifth-copy h2 {

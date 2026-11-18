@@ -523,7 +523,10 @@
       || (fourth.classList.contains('is-return-frame') && fourthInViewport));
     const fifthInViewport = fifth.getBoundingClientRect().top < innerHeight && fifth.getBoundingClientRect().bottom > 0;
     const fifthWasVisible = fifth.classList.contains('is-visible');
-    fifth.classList.toggle('is-visible', (current === fifth && !moving) || current === sixth
+    const fifthEntered = desktop.matches
+      ? current === fifth && !moving
+      : fifthInViewport && fifth.getBoundingClientRect().top <= innerHeight * 0.85;
+    fifth.classList.toggle('is-visible', fifthEntered || current === sixth
       || (fifthWasVisible && fifthInViewport));
     syncCareers(current);
     syncIntroScrollLock(current);
