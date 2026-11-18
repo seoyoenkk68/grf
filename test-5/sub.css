@@ -1159,7 +1159,127 @@
   }
 }
 
+/* Compact tablets retain two columns with enough room for the copy. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grf-sub .sub-editorial {
+    --sub-gap: 32px;
+  }
+  .grf-sub .sub-page-title:has(> .sub-page-display) {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .grf-sub .sub-editorial .sub-intro-copy > p:not(.sub-label) {
+    width: 100%;
+    font-size: 16px;
+  }
+  .grf-sub .about-cooperation {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .grf-sub .careers-audiences section {
+    padding: 24px;
+  }
+}
+
 @media (max-width: 767px) {
+  .grf-sub :is(.sub-page-title, .sub-editorial) {
+    --sub-spacing: 84px;
+  }
+  .grf-sub .sub-editorial {
+    overflow-wrap: anywhere;
+  }
+  .grf-sub .sub-editorial :is(h2, h3) {
+    text-wrap: pretty;
+  }
+  .grf-sub .sub-editorial p:not(.sub-label) {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .grf-sub .sub-editorial .sub-intro-copy > p:not(.sub-label) {
+    width: 100%;
+    font-size: 16px;
+  }
+  .grf-sub .sub-intro h2 {
+    font-size: clamp(26px, 6.8vw, 34px);
+  }
+  .grf-sub .sub-intro h2 br {
+    display: none;
+  }
+  .grf-sub .sub-breadcrumb {
+    flex-wrap: wrap;
+    gap: 10px;
+    white-space: normal;
+  }
+  .grf-sub .about-history li {
+    grid-template-columns: 58px minmax(0, 1fr);
+    align-items: start;
+    padding-inline-start: 24px;
+  }
+  .grf-sub .about-history li > span {
+    font-size: 15px;
+  }
+  .grf-sub .sharing-activities .sharing-activity-brief {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .grf-sub .sharing-activity-brief .sharing-activity-visual {
+    aspect-ratio: 16 / 10;
+  }
+  .grf-sub .sharing-volunteer {
+    aspect-ratio: auto;
+    min-height: 220px;
+    padding: 28px 20px;
+  }
+  .grf-sub .application-fields > label {
+    min-width: 0;
+  }
+  .grf-sub .application-fields :is(input, select, textarea) {
+    min-width: 0;
+    font-size: 16px;
+  }
+  .grf-sub .application-consent {
+    padding-inline: 16px;
+  }
+  .grf-sub .application-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .grf-sub .application-actions .join {
+    justify-content: space-between;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  .grf-sub .careers-process li {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 8px 20px;
+    text-align: start;
+  }
+  .grf-sub .careers-process-visual {
+    grid-row: 1 / span 2;
+    width: 64px;
+    margin: 0;
+  }
+  .grf-sub .careers-process h3 span {
+    display: inline;
+    margin-inline-end: 8px;
+    font-size: 24px;
+  }
+  .grf-sub .sub-editorial .careers-process li p {
+    grid-column: 2;
+    margin: 0;
+  }
+  .grf-sub .careers-faq-list summary {
+    padding-inline: 0 32px;
+    text-align: start;
+  }
+  .grf-sub .sub-editorial .careers-faq-list p {
+    padding-inline: 0;
+    text-align: start;
+  }
+  .grf-sub .sub-editorial .privacy-policy p {
+    font-size: 14px;
+  }
   .grf-sub .application-fields {
     grid-template-columns: minmax(0, 1fr);
   }
