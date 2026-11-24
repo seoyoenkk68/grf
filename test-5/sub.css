@@ -374,6 +374,40 @@
   letter-spacing: -0.04em;
 }
 
+/* Empty insurer slots within the existing history section. */
+.grf-sub .about-history .about-insurers {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 20px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.grf-sub .about-history .about-insurers > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  min-height: clamp(72px, 8vw, 112px);
+  padding: 0;
+  border: 1px solid var(--sub-rule);
+  background: #fbf8f1;
+  box-sizing: border-box;
+}
+.grf-sub .about-history .about-insurers > li::before,
+.grf-sub .about-history .about-insurers > li::after {
+  content: none;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grf-sub .about-history .about-insurers {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .grf-sub .about-history .about-insurers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .grf-sub .about-history li > span {
   color: var(--ink);
   font-size: 16px;
