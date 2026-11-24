@@ -398,6 +398,12 @@
 .grf-sub .about-history .about-insurers > li::after {
   content: none;
 }
+.grf-sub .about-insurers img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 @media (min-width: 768px) and (max-width: 1023px) {
   .grf-sub .about-history .about-insurers {
     grid-template-columns: repeat(3, minmax(0, 1fr));
