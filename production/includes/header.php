@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title><?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') ?></title>
 <?php if ($isHome): ?>
-    <link rel="preload" href="./assets/image/hero-teamwork.jpg" as="image" />
+    <link rel="preload" href="./assets/image/hero-high-five.jpg" as="image" />
 <?php endif; ?>
     <link
       rel="preload"
