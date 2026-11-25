@@ -18,8 +18,8 @@ $pageTitle = 'Golden Ribbon Family';
             <div class="intro-card-motion">
               <div class="image-mask">
                 <img
-                  src="./assets/image/hero-1.png"
-                  alt="푸른 들판과 산, 바다 앞에서 황금빛 리본으로 연결된 여섯 사람"
+                  src="./assets/image/hero-puzzle.jpg"
+                  alt="따뜻한 햇빛 아래 두 사람이 퍼즐 조각을 맞추는 모습"
                   class="is-current"
                 />
                 <img
