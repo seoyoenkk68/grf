@@ -1568,6 +1568,15 @@
     #071318b0
   );
 }
+.grf-hero:has(.image-mask > img:first-child.is-current) .shade {
+  background: linear-gradient(
+    180deg,
+    #30191c94,
+    #30191c64 28%,
+    #30191c8c 68%,
+    #30191cb0
+  );
+}
 .grf-hero.hero-slide-layout .scene-copy {
   position: static;
   inset: auto;
