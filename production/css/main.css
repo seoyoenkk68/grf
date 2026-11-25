@@ -1571,10 +1571,10 @@
 .grf-hero:has(.image-mask > img:first-child.is-current) .shade {
   background: linear-gradient(
     180deg,
-    #30191c94,
-    #30191c64 28%,
-    #30191c8c 68%,
-    #30191cb0
+    #23090294,
+    #23090264 28%,
+    #2309028c 68%,
+    #230902b0
   );
 }
 .grf-hero.hero-slide-layout .scene-copy {
