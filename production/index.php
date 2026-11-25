@@ -23,14 +23,14 @@ $pageTitle = 'Golden Ribbon Family';
                   class="is-current"
                 />
                 <img
-                  src="./assets/image/Photorealistic cinematic close-u 740478 NAc.png"
-                  alt="바다를 배경으로 황금빛 리본을 함께 잡은 두 사람의 손"
+                  src="./assets/image/hero-golden-ribbon-clean.jpg"
+                  alt="바다가 보이는 언덕에서 두 사람이 황금빛 리본을 함께 잡는 모습"
                   aria-hidden="true"
                   decoding="async"
                 />
                 <img
-                  src="./assets/image/Photorealistic cinematic wide la 680470 1GP.png"
-                  alt="구름이 깔린 산 능선 위로 이어지는 황금빛 리본"
+                  src="./assets/image/hero-shared-growth.jpg"
+                  alt="여러 사람이 흙과 새싹을 손에 담아 함께 모으는 모습"
                   aria-hidden="true"
                   decoding="async"
                 />
@@ -196,8 +196,8 @@ $pageTitle = 'Golden Ribbon Family';
               <div class="support-image-window">
                 <img
                   class="support-photo"
-                  src="./assets/image/main-sec2-intro.jpg"
-                  alt="바다와 들판을 배경으로 나무 옆에 선 한 사람과 길게 이어지는 황금빛 리본"
+                  src="./assets/image/support-team-planning.jpg"
+                  alt="동료들이 노트북과 자료를 함께 살펴보며 업무 계획을 논의하는 모습"
                   loading="eager"
                   decoding="async"
                 />
@@ -384,10 +384,10 @@ $pageTitle = 'Golden Ribbon Family';
           </h2>
           <div class="section-ocean-photo">
             <img
-              src="./assets/image/main_sec3_full.jpg"
-              alt="해 질 무렵 바닷가에서 노트북 앞에 앉은 설계사와 골드 리본"
-              width="1920"
-              height="1080"
+              src="./assets/image/ocean-sunset-workspace.jpg"
+              alt="황금빛 노을이 비치는 바다 위 작업실에서 노트북 앞에 앉은 여성과 골드 리본"
+              width="1679"
+              height="937"
               decoding="async"
             />
           </div>
@@ -683,8 +683,8 @@ $pageTitle = 'Golden Ribbon Family';
           <div class="section-fifth-silk" aria-hidden="true"></div>
           <img
             class="section-fifth-image"
-            src="./assets/image/main_sec5_img.jpg"
-            alt="푸른 언덕에서 어린 묘목에 황금빛 리본이 묶여 있고 손을 모아 나무를 감싸는 모습"
+            src="./assets/image/sharing-planting-seedling.jpg"
+            alt="두 손으로 흙을 모아 어린 새싹을 심는 모습"
             loading="lazy"
             decoding="async"
           />

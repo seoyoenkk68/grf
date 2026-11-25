@@ -1561,23 +1561,23 @@ function createSilk(THREE, container) {
         );
 
         vec3 deepShadow = vec3(
-          0.23, 0.145, 0.085
+          0.085, 0.045, 0.022
         ) * 0.86;
 
         vec3 shadowGold = vec3(
-          0.39, 0.255, 0.145
+          0.24, 0.13, 0.065
         );
 
         vec3 baseGold = vec3(
-          0.62, 0.445, 0.275
+          0.46, 0.285, 0.135
         );
 
         vec3 warmGold = vec3(
-          0.82, 0.645, 0.420
+          0.72, 0.49, 0.255
         );
 
         vec3 silkHighlight = vec3(
-          1.0, 0.89, 0.68
+          0.95, 0.77, 0.48
         );
 
         float light =

@@ -385,7 +385,8 @@
 .grf-page .section-fifth-silk {
   position: absolute;
   inset: 0;
-  opacity: 0.42;
+  opacity: 0.55;
+  mask-image: linear-gradient(90deg, #000 25%, rgb(0 0 0 / 70%) 42%, transparent 68%);
   pointer-events: none;
   z-index: 2;
 }
@@ -396,7 +397,7 @@
   background: linear-gradient(
     90deg,
     rgb(0 0 0),
-    rgb(0 0 0 / 67%) 33%,
+    rgb(0 0 0) 33%,
     transparent 74%
   );
   pointer-events: none;
@@ -409,7 +410,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: normal;
 }
 .grf-page .section-fifth-container {
   position: relative;
@@ -1571,10 +1572,10 @@
 .grf-hero:has(.image-mask > img:first-child.is-current) .shade {
   background: linear-gradient(
     180deg,
-    #23090294,
-    #23090264 28%,
-    #2309028c 68%,
-    #230902b0
+    #000000b3,
+    #0000009e 28%,
+    #000000a3 68%,
+    #000000bf
   );
 }
 .grf-hero.hero-slide-layout .scene-copy {
