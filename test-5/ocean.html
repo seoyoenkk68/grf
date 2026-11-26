@@ -16,7 +16,7 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
     />
-    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="common.css?v=20261126-header" />
     <link rel="stylesheet" href="sub.css?v=20261118-spacing" />
     <link rel="stylesheet" href="vendor/lenis/lenis.css" />
     <script src="common.js" defer></script>
@@ -28,8 +28,7 @@
       <header class="header">
         <a
           class="brand"
-          href="./"
-          aria-label="Golden Ribbon Family · 메인 처음으로"
+          href="./"          aria-label="Golden Ribbon Family · 메인 처음으로"
         >
           Golden Ribbon<span>Family</span>
         </a>
@@ -41,23 +40,12 @@
             >
             <span class="join-arrow" aria-hidden="true">↗</span>
           </a>
-          <button
-            class="header-menu-toggle"
-            type="button"
-            aria-label="메뉴 열기"
-            aria-controls="header-navigation"
-            aria-expanded="false"
-          >
+          <button class="header-menu-toggle" type="button" aria-label="메뉴 열기" aria-controls="header-navigation" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </button>
         </div>
-        <nav
-          id="header-navigation"
-          class="ribbon-nav"
-          aria-label="주 메뉴"
-          data-lenis-prevent
-        >
+        <nav id="header-navigation" class="ribbon-nav" aria-label="주 메뉴" data-lenis-prevent>
           <a class="nav-item" href="about.html" aria-label="골든리본 소개">
             <span class="nav-label" aria-hidden="true"
               ><span class="nav-label-ko">골든리본 소개</span
@@ -65,15 +53,17 @@
             >
           </a>
           <div class="support-nav">
-            <a class="nav-item" href="support.html" aria-label="설계사 지원"><span class="nav-label" aria-hidden="true"
+            <a class="nav-item active" href="support.html" aria-label="설계사 지원"><span class="nav-label" aria-hidden="true"
                 ><span class="nav-label-ko">설계사 지원</span
-                ><span class="nav-label-en" lang="en">Your Growth</span></span
+                ><span class="nav-label-en" lang="en"
+                  >Your Growth</span
+                ></span
               ></a>
             <details class="support-nav-disclosure">
               <summary aria-label="설계사 지원 하위 메뉴"></summary>
               <div class="support-nav-links">
-                <a href="support.html">지원 혜택</a>
-                <a href="ocean.html" lang="en" aria-current="page">F-OCEAN</a>
+                <a class="" href="support.html">지원 혜택</a>
+                <a class="active" href="ocean.html" lang="en" aria-current="page">F-OCEAN</a>
               </div>
             </details>
           </div>
