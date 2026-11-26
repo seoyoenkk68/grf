@@ -254,7 +254,7 @@
 }
 
 .grf-sub .sub-editorial .about-values p.about-value-tagline {
-  margin: 12px auto 0;
+  margin: 16px auto 0;
   color: #877241;
   font-size: clamp(13px, 1.05vw, 15px);
   font-weight: 600;
@@ -263,7 +263,7 @@
   text-wrap: balance;
 }
 .grf-sub .sub-editorial .about-value-tagline + p {
-  margin-top: 16px;
+  margin-top: 22px;
 }
 
 .grf-sub .sub-editorial .about-values p.about-value-description {
