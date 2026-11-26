@@ -52,11 +52,12 @@ $pageTitle = '골든리본 소개 | 골든리본패밀리';
               </div>
               <div>
                 <h3><span aria-hidden="true">01</span>가치 있는 성공</h3>
-                <p>
-                  골든리본패밀리가 말하는 성공은 단순히 소득을 늘리는 데 그치지
-                  않습니다. 고객에게 도움이 되는 전문성을 키우고, 그
-                  결실을 이웃과 사회에 나누는 것까지 진정한 성공의 가치로
-                  생각합니다.
+                <p class="about-value-tagline">사람에 대한 진심과 압도적인 전문성</p>
+                <p class="about-value-description">
+                  의료·법률·노무·손해사정·세무 등 각 분야 전문가와의 협력 체계를 바탕으로,
+                  설계사의 역량을 높이는 전문 정기 교육과 실무 및 동반 지원을 제공합니다.
+                  혼자서는 해결하기 어려운 문제도 함께 해결하고 함께 성장하며 오래 일할 수 있는 곳.
+                  골든리본패밀리가 만들어가는 문화입니다.
                 </p>
               </div>
             </li>
@@ -137,38 +138,49 @@ $pageTitle = '골든리본 소개 | 골든리본패밀리';
             aria-label="생명·손해보험사 목록"
             data-sub-reveal
           >
-            <ul class="about-insurers" role="list">
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="삼성생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="한화생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="교보생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="신한라이프" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="동양생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="미래에셋생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="흥국생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="DB생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="KB라이프생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="NH농협생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="메트라이프생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="라이나생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="AIA생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="ABL생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="KDB생명" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="삼성화재" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="현대해상" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="DB손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="KB손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="메리츠화재" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="한화손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="롯데손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="흥국화재" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="NH농협손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="AXA손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="AIG손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="라이나손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="하나손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="신한EZ손해보험" width="300" height="100" /></li>
-              <li><img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22100%22%3E%3C/svg%3E" alt="카카오페이손해보험" width="300" height="100" /></li>
-            </ul>
+            <div class="about-insurer-group">
+              <h3>생명보험</h3>
+              <ul class="about-insurers" role="list">
+                <li><img class="insurer-logo" src="./assets/image/partners/nh-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">NH농협생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/tongyang-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">동양생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/hanwha-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">한화생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/samsung-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">삼성생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/db-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">DB생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/abl-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">ABL생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/prudential-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">푸르덴셜생명</span></li>
+                <li><img class="insurer-logo insurer-logo-wide" src="./assets/image/partners/metlife-wordmark.png" alt="" width="48" height="24" /><span class="insurer-name">메트라이프생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/shinhan-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">신한라이프</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/kyobo-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">교보생명</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/kdb-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">KDB생명</span></li>
+                <li><img class="insurer-logo insurer-logo-chubb" src="./assets/image/partners/chubb-life-wordmark.svg" alt="" width="64" height="24" /><span class="insurer-name">처브라이프</span></li>
+                <li><img class="insurer-logo" src="./assets/image/partners/kb-life-symbol.png" alt="" width="24" height="24" /><span class="insurer-name">KB생명</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">흥국생명</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">라이나생명</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">미래에셋생명</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">iM라이프</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">AIA생명</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">IBK연금보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">하나생명</span></li>
+              </ul>
+            </div>
+            <div class="about-insurer-group">
+              <h3>손해보험</h3>
+              <ul class="about-insurers" role="list">
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">삼성화재</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">현대해상</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">KB손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">메리츠화재</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">흥국화재</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">롯데손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">한화손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">DB손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">MG손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">NH농협손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">AIG손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">하나손해보험</span></li>
+                <li><span class="insurer-logo-placeholder" aria-hidden="true"></span><span class="insurer-name">라이나손보</span></li>
+              </ul>
+            </div>
           </section>
         </div>
 

@@ -253,6 +253,30 @@
   text-align: center;
 }
 
+.grf-sub .sub-editorial .about-values p.about-value-tagline {
+  margin: 12px auto 0;
+  color: #877241;
+  font-size: clamp(13px, 1.05vw, 15px);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.grf-sub .sub-editorial .about-value-tagline + p {
+  margin-top: 16px;
+}
+
+.grf-sub .sub-editorial .about-values p.about-value-description {
+  max-width: 38ch;
+  margin-inline: auto;
+  text-align: start;
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  letter-spacing: -0.02em;
+  line-height: 1.85;
+}
+
 .grf-sub .about-value-visual {
   width: 60%;
   aspect-ratio: 4 / 3;
@@ -410,6 +434,21 @@
 .grf-sub .about-history .about-insurers > li::before,
 .grf-sub .about-history .about-insurers > li::after {
   content: none;
+}
+.grf-sub .about-history .about-insurers .insurer-logo {
+  display: block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.grf-sub .about-history .about-insurers .insurer-logo-wide {
+  flex-basis: 48px;
+  width: 48px;
+}
+.grf-sub .about-history .about-insurers .insurer-logo-chubb {
+  flex-basis: 64px;
+  width: 64px;
 }
 .grf-sub .about-history .about-insurers .insurer-logo-placeholder {
   flex: 0 0 24px;
