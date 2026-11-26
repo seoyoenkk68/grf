@@ -374,7 +374,20 @@
   letter-spacing: -0.04em;
 }
 
-/* Empty insurer slots within the existing history section. */
+/* Insurer names with placeholders for future logos. */
+.grf-sub .about-insurer-group + .about-insurer-group {
+  margin-top: 28px;
+}
+.grf-sub .about-insurer-group h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+.grf-sub .about-insurer-group h3 span {
+  margin-inline-start: 6px;
+  color: var(--ink-muted);
+  font-size: 13px;
+  font-weight: 400;
+}
 .grf-sub .about-history .about-insurers {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -384,12 +397,12 @@
   list-style: none;
 }
 .grf-sub .about-history .about-insurers > li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  place-items: center;
-  min-height: 0;
-  aspect-ratio: 3 / 1;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px;
   border: 0;
   background: #fbf8f1;
   box-sizing: border-box;
@@ -398,26 +411,26 @@
 .grf-sub .about-history .about-insurers > li::after {
   content: none;
 }
-.grf-sub .about-insurers img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+.grf-sub .about-history .about-insurers .insurer-logo-placeholder {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #b4a488;
+  background: #e5dbc8;
+  box-sizing: border-box;
 }
-@media (min-width: 768px) and (max-width: 1023px) {
-  .grf-sub .about-history .about-insurers {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-@media (max-width: 767px) {
-  .grf-sub .about-history .about-insurers {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.grf-sub .about-history li > span {
+.grf-sub .about-history .about-insurers .insurer-name {
+  min-width: 0;
   color: var(--ink);
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1199px) {
+  .grf-sub .about-history .about-insurers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .grf-sub .sub-related-links {
