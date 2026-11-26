@@ -267,9 +267,10 @@
 }
 
 .grf-sub .sub-editorial .about-values p.about-value-description {
+  font-size: 15.5px;
   max-width: 38ch;
   margin-inline: auto;
-  text-align: start;
+  text-align: center;
   text-wrap: pretty;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -316,11 +317,21 @@
 .grf-sub .about-cooperation {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
   margin: clamp(26px, 4vw, 52px) 0 0;
-  padding: 18px 0 0;
-  border-top: 1px solid var(--sub-rule);
+  padding: 0;
   list-style: none;
+}
+.grf-sub .about-cooperation li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 16px;
+  border: 1px solid #d8ceba;
+  border-radius: 2px;
+  background: transparent;
+  text-align: center;
+  text-wrap: pretty;
 }
 
 .grf-sub .about-cooperation strong,
@@ -337,9 +348,17 @@
 }
 
 .grf-sub .about-cooperation span {
-  margin-top: 6px;
+  margin-top: 0;
   color: var(--ink-muted);
   font-size: 15px;
+}
+.grf-sub .about-cooperation strong::after {
+  display: block;
+  width: 24px;
+  height: 1px;
+  margin: 14px auto;
+  background: #b6a071;
+  content: "";
 }
 
 .grf-sub .about-history ol {
@@ -1297,6 +1316,9 @@
 @media (max-width: 767px) {
   .grf-sub :is(.sub-page-title, .sub-editorial) {
     --sub-spacing: 112px;
+  }
+  .grf-sub .sub-editorial .about-values p.about-value-description {
+    font-size: 14.5px;
   }
   .grf-sub .sub-editorial {
     overflow-wrap: anywhere;
