@@ -441,14 +441,34 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
+  padding: 2px;
+  box-sizing: border-box;
+}
+.grf-sub .about-history .about-insurers .insurer-logo-dense {
+  padding: 3px;
+}
+.grf-sub .about-history .about-insurers .insurer-logo-airy {
+  padding: 1px;
+}
+.grf-sub .about-history .about-insurers .insurer-logo-hyundai {
+  padding: 3px;
+  box-sizing: border-box;
+}
+.grf-sub .about-history .about-insurers .insurer-logo-samsung,
+.grf-sub .about-history .about-insurers .insurer-logo-meritz {
+  flex-basis: 40px;
+  width: 40px;
+  padding: 0;
 }
 .grf-sub .about-history .about-insurers .insurer-logo-wide {
   flex-basis: 48px;
   width: 48px;
+  padding: 0;
 }
 .grf-sub .about-history .about-insurers .insurer-logo-chubb {
-  flex-basis: 64px;
-  width: 64px;
+  flex-basis: 48px;
+  width: 48px;
+  padding: 0;
 }
 .grf-sub .about-history .about-insurers .insurer-logo-placeholder {
   flex: 0 0 24px;
