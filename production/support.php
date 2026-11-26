@@ -32,8 +32,8 @@ $pageTitle = '설계사 지원 혜택 | 골든리본패밀리';
           </div>
           <figure class="sub-image" data-sub-reveal>
             <img
-              src="./assets/image/main-sec2-intro.jpg"
-              alt="바다와 들판을 배경으로 한 사람과 길게 이어지는 황금빛 리본"
+              src="./assets/image/support-intro-collaboration.jpg"
+              alt="동료들이 노트북 화면을 함께 살펴보며 업무를 논의하는 모습"
               decoding="async"
             />
           </figure>
